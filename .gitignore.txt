@@ -1,0 +1,20 @@
+# Build outputs
+Debug/
+Release/
+build/
+*.o
+*.a
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+
+# IDE/user local
+.settings/
+*.launch
+
+# OS junk
+.DS_Store
+Thumbs.db
