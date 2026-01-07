@@ -8,8 +8,9 @@ int main(void){
 
 	while(1){
 		led_off();
+		delay(1000);
 		led_on();
-
+		delay(1000);
 	}
 }
 
@@ -36,8 +37,22 @@ void led_off(void){
 }
 
 //HSI 16 MHz
-void millis(){
+void delay(uint32_t ms){
+	volatile uint32_t* const STK_CTRL = (volatile uint32_t*)(0xE000E010U+0x00U);
+	volatile uint32_t* const STK_LOAD = (volatile uint32_t*)(0xE000E010U+0x04U);
+	volatile uint32_t* const STK_VAL  = (volatile uint32_t*)(0xE000E010U+0x08U);
+	uint32_t count=0;
 
+	*STK_LOAD=0x3e7fU;
+	*STK_VAL=0U;
+	*STK_CTRL=0x5U;
+
+	for (count=0; count<ms; count++) {
+	    while (((*STK_CTRL >> 16) & 1U) != 1U) {
+
+	    }
+
+	}
 }
 
 void Error_Handler(void)
