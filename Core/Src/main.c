@@ -1,46 +1,50 @@
 #include <stdint.h>
+#include "f429zi_reg.h"
 
-
-
+int GPIO_Enable(gpio_port_t port);
+void led_on(void);
+void led_off(void);
+void delay(uint32_t ms);
+int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
 
 int main(void){
-	volatile uint32_t* const RCC_CFGR=(volatile uint32_t *)(0x40023800+0x08U);
 
 	while(1){
 		led_off();
+		GPIO_Write(GPIO_PORT_B,10,0);
 		delay(1000);
+
 		led_on();
+		GPIO_Write(GPIO_PORT_B,10,1);
 		delay(1000);
 	}
 }
 
+int GPIO_Enable(gpio_port_t port){
+	if (port > GPIO_PORT_K) return 1;
+	*AHB1ENR |=(1U<<port);
+	return 0;
+}
+
 void led_on(void){
-	//PB7 PC13 PB14  LD 1 2 3
-	volatile uint32_t* const AHB1ENR=(volatile uint32_t *)(0x40023800+0x30U);
-	volatile uint32_t const GPIOB_RCC_Mask = (0x1U<<1U);
+	//PB7 PC13 PB14  LD1,2,3
+	uint32_t const GPIO_MOD_Mask      = (0x1U << (2U * 7U));
+	uint32_t const GPIO_MOD_ClearMask = ~(0x3U << (2U * 7U));
 
-	*AHB1ENR=*AHB1ENR|GPIOB_RCC_Mask; //GPIOB Enable
+	GPIO_Enable(GPIO_PORT_B);
 
-	volatile uint32_t* const GPIOB_MODER = (volatile uint32_t*)(0x40020400U+0x00U);
+	*GPIOB_MODER =(*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
 
-	volatile uint32_t const GPIOB_MOD_Mask      = (0x1U << (2U * 7U));
-	volatile uint32_t const GPIOB_MOD_ClearMask = ~(0x3U << (2U * 7U));
-	*GPIOB_MODER =(*GPIOB_MODER & GPIOB_MOD_ClearMask) | GPIOB_MOD_Mask;
-
-	volatile uint32_t* const GPIOB_BSRR = (volatile uint32_t*)(0x40020400U+0x18U);
 	*GPIOB_BSRR = (0x1U<<7);
 };
 
 void led_off(void){
-	volatile uint32_t* const GPIOB_BSRR = (volatile uint32_t*)(0x40020400U+0x18U);
+
 	*GPIOB_BSRR = (0x1U<<23);
 }
 
 //HSI 16 MHz
 void delay(uint32_t ms){
-	volatile uint32_t* const STK_CTRL = (volatile uint32_t*)(0xE000E010U+0x00U);
-	volatile uint32_t* const STK_LOAD = (volatile uint32_t*)(0xE000E010U+0x04U);
-	volatile uint32_t* const STK_VAL  = (volatile uint32_t*)(0xE000E010U+0x08U);
 	uint32_t count=0;
 
 	*STK_LOAD=0x3e7fU;
@@ -49,10 +53,29 @@ void delay(uint32_t ms){
 
 	for (count=0; count<ms; count++) {
 	    while (((*STK_CTRL >> 16) & 1U) != 1U) {
-
 	    }
-
 	}
+}
+
+int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level){
+	volatile uint32_t*base,*GPIOx_MODER,*GPIOx_BSRR;
+	uint32_t const GPIO_MOD_Mask = (0x1U << (2U * pin));
+	uint32_t const GPIO_MOD_ClearMask = ~(0x3U << (2U * pin));
+
+	if(pin>15) return 1 ;
+
+	base =(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (port * 0x400));
+	GPIOx_MODER=(volatile uint32_t*)((uintptr_t)base + 0x00U);
+	GPIOx_BSRR =(volatile uint32_t*)((uintptr_t)base + 0x18U);
+
+	GPIO_Enable(port);
+	*GPIOx_MODER= (*GPIOx_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+
+	if (level == 1)
+		*GPIOx_BSRR = (1U << pin);
+	else
+		*GPIOx_BSRR = (1U << (pin+16U));
+	return 0;
 }
 
 void Error_Handler(void)
