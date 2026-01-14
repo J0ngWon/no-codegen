@@ -91,6 +91,12 @@ int uart_echo(uint8_t msg){
 	uint32_t const GPIO_AFRL_Mask = (0x88U << 24U);
 	uint32_t const GPIO_AFRL_ClearMask = ~(0xffU << 24U);
 
+	volatile uint32_t* USART_CR1=
+				(volatile uint32_t*)((uintptr_t)USART6_BASE + (0xCU));
+	volatile uint32_t* USART_CR2=
+					(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x10));
+	volatile uint32_t* USART_BRR=
+						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x8));
 
 	*APB2ENR |=(1U<<5);
 	GPIO_Enable(GPIO_PORT_C);
@@ -98,9 +104,9 @@ int uart_echo(uint8_t msg){
 
 	*GPIOC_AFRL= (*GPIOC_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
 
-	volatile uint32_t* USART_CR1=
-			(volatile uint32_t*)((uintptr_t)USART6_BASE + (0xCU);
+	*USART_CR1 = (1U<<13); //set UE bit =1 Enable ,M bit =0 1S 8D nST  ;
 
+	*USART_CR2 &= ~(3U<<12); // 1 STOP bits
 }
 
 void Error_Handler(void)
