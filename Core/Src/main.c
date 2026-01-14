@@ -6,9 +6,10 @@ void led_on(void);
 void led_off(void);
 void delay(uint32_t ms);
 int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
+int uart_echo(uint8_t msg);
 
 int main(void){
-
+	uart_echo('a');
 	while(1){
 		led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
@@ -76,6 +77,30 @@ int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level){
 	else
 		*GPIOx_BSRR = (1U << (pin+16U));
 	return 0;
+}
+
+//USART6(APB2) TX:PC6 RX:PC7
+int uart_echo(uint8_t msg){
+	volatile uint32_t* GPIOC_MODER=
+			(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_C * 0x400) + 0x00U);
+	uint32_t const GPIO_MOD_Mask = (0xaU << (2U * 6U));
+	uint32_t const GPIO_MOD_ClearMask = ~(0xfU << (2U * 6U));
+
+	volatile uint32_t* GPIOC_AFRL=
+				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_C * 0x400) + 0x20U);
+	uint32_t const GPIO_AFRL_Mask = (0x88U << 24U);
+	uint32_t const GPIO_AFRL_ClearMask = ~(0xffU << 24U);
+
+
+	*APB2ENR |=(1U<<5);
+	GPIO_Enable(GPIO_PORT_C);
+	*GPIOC_MODER= (*GPIOC_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+
+	*GPIOC_AFRL= (*GPIOC_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
+
+	volatile uint32_t* USART_CR1=
+			(volatile uint32_t*)((uintptr_t)USART6_BASE + (0xCU);
+
 }
 
 void Error_Handler(void)

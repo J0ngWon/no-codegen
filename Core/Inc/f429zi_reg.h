@@ -26,8 +26,12 @@ typedef enum
 }gpio_port_t;
 
 /* ===== RCC ===== */
+
+#define RCC_BASE        (volatile uint32_t *)(0x40023800U);
+#define RCC_CFGR        (volatile uint32_t *)(0x40023800U+0x08U);
+
 #define AHB1ENR         ((volatile uint32_t *)(0x40023800U + 0x30U))
-#define RCC_CFGR=(volatile uint32_t *)(0x40023800+0x08U);
+#define APB2ENR         ((volatile uint32_t *)(0x40023800U + 0x44U))
 
 /* ===== GPIO ===== */
 #define GPIO_BASE_VAL   ((volatile uint32_t *)(0x40020000U + 0x00U))
@@ -39,6 +43,9 @@ typedef enum
 #define STK_CTRL        ((volatile uint32_t *)(0xE000E010U + 0x00U))
 #define STK_LOAD        ((volatile uint32_t *)(0xE000E010U + 0x04U))
 #define STK_VAL         ((volatile uint32_t *)(0xE000E010U + 0x08U))
+
+/* ===== USART ===== */
+#define USART6_BASE     ((volatile uint32_t *)(0x40011400U + 0x00U))
 
 
 #endif /* INC_F429ZI_REG_H_ */
