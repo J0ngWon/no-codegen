@@ -9,7 +9,9 @@ int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
 int uart_echo(uint8_t msg);
 
 int main(void){
-	uart_echo('a');
+	volatile uint32_t*a=RCC_CFGR;
+
+	uart_echo('b');
 	while(1){
 		led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
@@ -97,6 +99,10 @@ int uart_echo(uint8_t msg){
 					(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x10));
 	volatile uint32_t* USART_BRR=
 						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x8));
+	volatile uint32_t* USART_DR=
+						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x4));
+	volatile uint32_t* USART_SR=
+						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x0));
 
 	*APB2ENR |=(1U<<5);
 	GPIO_Enable(GPIO_PORT_C);
@@ -107,6 +113,14 @@ int uart_echo(uint8_t msg){
 	*USART_CR1 = (1U<<13); //set UE bit =1 Enable ,M bit =0 1S 8D nST  ;
 
 	*USART_CR2 &= ~(3U<<12); // 1 STOP bits
+
+	*USART_BRR =0x8bU;
+
+	*USART_CR1 |=(1U<<3);
+
+	*USART_DR=msg;
+	while((*USART_SR & (1U << 6)) == 0U);
+
 }
 
 void Error_Handler(void)
