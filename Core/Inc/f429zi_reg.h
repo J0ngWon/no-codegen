@@ -44,8 +44,15 @@ typedef enum
 #define STK_LOAD        ((volatile uint32_t *)(0xE000E010U + 0x04U))
 #define STK_VAL         ((volatile uint32_t *)(0xE000E010U + 0x08U))
 
-/* ===== USART ===== */
+/* ===== USART6 ===== */
 #define USART6_BASE     ((volatile uint32_t *)(0x40011400U + 0x00U))
+
+#define USART_CR1   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x0CU))
+#define USART_CR2   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x10U))
+#define USART_BRR   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x08U))
+#define USART_DR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x04U))
+#define USART_SR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x00U))
+
 
 
 #endif /* INC_F429ZI_REG_H_ */

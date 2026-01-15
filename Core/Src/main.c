@@ -1,17 +1,26 @@
 #include <stdint.h>
 #include "f429zi_reg.h"
 
+void USART6_INIT(void);
+
 int GPIO_Enable(gpio_port_t port);
 void led_on(void);
 void led_off(void);
 void delay(uint32_t ms);
 int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
-int uart_echo(uint8_t msg);
+int uart_putc(uint8_t msg);
+int uart_puts(const uint8_t* msg);
+
 
 int main(void){
-	volatile uint32_t*a=RCC_CFGR;
+	USART6_INIT();
 
-	uart_echo('b');
+	uart_putc('o');
+	uart_putc('k');
+	uart_putc('\n');
+
+	uart_puts("hello\n");
+
 	while(1){
 		led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
@@ -39,7 +48,7 @@ void led_on(void){
 	*GPIOB_MODER =(*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
 
 	*GPIOB_BSRR = (0x1U<<7);
-};
+}
 
 void led_off(void){
 
@@ -81,8 +90,8 @@ int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level){
 	return 0;
 }
 
-//USART6(APB2) TX:PC6 RX:PC7
-int uart_echo(uint8_t msg){
+//USART6(APB2) TX:PC6 RX:PC7 baud 115200
+void USART6_INIT(void){
 	volatile uint32_t* GPIOC_MODER=
 			(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_C * 0x400) + 0x00U);
 	uint32_t const GPIO_MOD_Mask = (0xaU << (2U * 6U));
@@ -92,17 +101,6 @@ int uart_echo(uint8_t msg){
 				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_C * 0x400) + 0x20U);
 	uint32_t const GPIO_AFRL_Mask = (0x88U << 24U);
 	uint32_t const GPIO_AFRL_ClearMask = ~(0xffU << 24U);
-
-	volatile uint32_t* USART_CR1=
-				(volatile uint32_t*)((uintptr_t)USART6_BASE + (0xCU));
-	volatile uint32_t* USART_CR2=
-					(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x10));
-	volatile uint32_t* USART_BRR=
-						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x8));
-	volatile uint32_t* USART_DR=
-						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x4));
-	volatile uint32_t* USART_SR=
-						(volatile uint32_t*)((uintptr_t)USART6_BASE + (0x0));
 
 	*APB2ENR |=(1U<<5);
 	GPIO_Enable(GPIO_PORT_C);
@@ -118,10 +116,38 @@ int uart_echo(uint8_t msg){
 
 	*USART_CR1 |=(1U<<3);
 
+}
+
+int uart_putc(uint8_t msg){
+	while((*USART_SR & (1U << 7)) == 0U);
+
 	*USART_DR=msg;
+
 	while((*USART_SR & (1U << 6)) == 0U);
 
+	return 0;
 }
+
+int uart_puts(const uint8_t* msg){
+
+	while (*msg != '\0') {
+		if (*msg == '\n') {
+			while ((*USART_SR & (1U << 7)) == 0U);
+			*USART_DR = '\r';
+		}
+		while ((*USART_SR & (1U << 7)) == 0U);
+		*USART_DR = *msg;
+
+		msg++;
+	}
+
+	while((*USART_SR & (1U << 6)) == 0U);
+
+	return 0;
+
+}
+
+
 
 void Error_Handler(void)
 {
