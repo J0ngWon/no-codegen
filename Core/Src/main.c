@@ -10,25 +10,30 @@ void delay(uint32_t ms);
 int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
 int uart_putc(uint8_t msg);
 int uart_puts(const uint8_t* msg);
-
+int uart_getc(void);
+int uart_fgets(char *msg ,uint32_t max_len);
 
 int main(void){
+	char test[]="";
+
 	USART6_INIT();
 
 	uart_putc('o');
 	uart_putc('k');
 	uart_putc('\n');
 
-	uart_puts("hello\n");
+
 
 	while(1){
-		led_off();
+		uart_fgets(test,16);
+		uart_puts(test);
+		/*led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
 		delay(1000);
 
 		led_on();
 		GPIO_Write(GPIO_PORT_B,10,1);
-		delay(1000);
+		delay(1000);*/
 	}
 }
 
@@ -114,16 +119,17 @@ void USART6_INIT(void){
 
 	*USART_BRR =0x8bU;
 
-	*USART_CR1 |=(1U<<3);
+	*USART_CR1 |=(1U<<3); //SET TE bit == TX ON
 
+	*USART_CR1 |=(1U<<2); //SET RE bit == RX ON
 }
 
 int uart_putc(uint8_t msg){
-	while((*USART_SR & (1U << 7)) == 0U);
+	while((*USART_SR & (1U << 7)) == 0U); //TXE
 
 	*USART_DR=msg;
 
-	while((*USART_SR & (1U << 6)) == 0U);
+	while((*USART_SR & (1U << 6)) == 0U); //TC
 
 	return 0;
 }
@@ -147,7 +153,36 @@ int uart_puts(const uint8_t* msg){
 
 }
 
+int uart_getc(void){
+	int msg;
 
+	while((*USART_SR & (1U << 5)) == 0U); //RXNE
+	if((*USART_SR & (0xf)) !=0)
+		{
+		msg=(int)(*USART_DR & 0xFFU);
+		return -1;
+		}
+
+	msg=(int)(*USART_DR & 0xFFU);
+
+	return msg;
+}
+
+int uart_fgets(char *msg ,uint32_t max_len){
+	for(int i=0 ;i<(max_len-1);i++){
+		int data=uart_getc();
+		if(data <0) return -1;
+		*msg=data;
+		if(*msg=='\n'){
+			msg++;
+			*msg='\0';
+			return 0;
+		}
+		msg++;
+	}
+	*msg='\0';
+	return 0;
+}
 
 void Error_Handler(void)
 {
