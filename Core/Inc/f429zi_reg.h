@@ -27,8 +27,8 @@ typedef enum
 
 /* ===== RCC ===== */
 
-#define RCC_BASE        (volatile uint32_t *)(0x40023800U);
-#define RCC_CFGR        (volatile uint32_t *)(0x40023800U+0x08U);
+#define RCC_BASE        (volatile uint32_t *)(0x40023800U)
+#define RCC_CFGR        (volatile uint32_t *)(0x40023800U+0x08U)
 
 #define AHB1ENR         ((volatile uint32_t *)(0x40023800U + 0x30U))
 #define APB2ENR         ((volatile uint32_t *)(0x40023800U + 0x44U))
@@ -36,8 +36,8 @@ typedef enum
 /* ===== GPIO ===== */
 #define GPIO_BASE_VAL   ((volatile uint32_t *)(0x40020000U + 0x00U))
 
-#define GPIOB_MODER     ((volatile uint32_t *)(0x40020400U + 0x00U))
-#define GPIOB_BSRR      ((volatile uint32_t *)(0x40020400U + 0x18U))
+#define GPIOB_MODER_LED     ((volatile uint32_t *)(0x40020400U + 0x00U))
+#define GPIOB_BSRR_LED      ((volatile uint32_t *)(0x40020400U + 0x18U))
 
 /* ===== SysTick ===== */
 #define STK_CTRL        ((volatile uint32_t *)(0xE000E010U + 0x00U))
@@ -53,6 +53,7 @@ typedef enum
 #define USART_DR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x04U))
 #define USART_SR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x00U))
 
-
+/* ===== I2C ===== */
+#define I2C1_BASE   (volatile uint32_t *)(0x40005400)
 
 #endif /* INC_F429ZI_REG_H_ */

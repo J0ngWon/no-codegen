@@ -12,6 +12,7 @@ int uart_putc(uint8_t msg);
 int uart_puts(const uint8_t* msg);
 int uart_getc(void);
 int uart_fgets(char *msg ,uint32_t max_len);
+void i2c1_init(void);
 
 int main(void){
 	char test[]="";
@@ -25,15 +26,15 @@ int main(void){
 
 
 	while(1){
-		uart_fgets(test,16);
-		uart_puts(test);
-		/*led_off();
+		/*uart_fgets(test,16);
+		uart_puts(test);*/
+		led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
 		delay(1000);
 
 		led_on();
 		GPIO_Write(GPIO_PORT_B,10,1);
-		delay(1000);*/
+		delay(1000);
 	}
 }
 
@@ -50,14 +51,14 @@ void led_on(void){
 
 	GPIO_Enable(GPIO_PORT_B);
 
-	*GPIOB_MODER =(*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+	*GPIOB_MODER_LED =(*GPIOB_MODER_LED & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
 
-	*GPIOB_BSRR = (0x1U<<7);
+	*GPIOB_BSRR_LED = (0x1U<<7);
 }
 
 void led_off(void){
 
-	*GPIOB_BSRR = (0x1U<<23);
+	*GPIOB_BSRR_LED = (0x1U<<23);
 }
 
 //HSI 16 MHz
@@ -183,6 +184,49 @@ int uart_fgets(char *msg ,uint32_t max_len){
 	*msg='\0';
 	return 0;
 }
+
+
+//PB9 SDA PB6 SCL
+void i2c1_init(void){
+	volatile uint32_t* GPIOB_MODER=
+				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x00U);
+		uint32_t const GPIO_MOD_Mask = (0x82U << (2U * 6U));
+		uint32_t const GPIO_MOD_ClearMask = ~(0xc3U << (2U * 6U));
+
+		//PB6
+		volatile uint32_t* GPIOB_AFRL=
+					(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x20U);
+		uint32_t const GPIO_AFRL_Mask = (0x4U << 24U);
+		uint32_t const GPIO_AFRL_ClearMask = ~(0xfU << 24U);
+
+		//PB9
+		volatile uint32_t* GPIOB_AFRH=
+							(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x24U);
+				uint32_t const GPIO_AFRH_Mask = (0x4U << 4U);
+				uint32_t const GPIO_AFRH_ClearMask = ~(0xfU << 4U);
+
+				volatile uint32_t* I2C1_CR2=
+								(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
+
+	GPIO_Enable(GPIO_PORT_B);
+	*GPIOB_MODER= (*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+	*GPIOB_AFRL= (*GPIOB_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
+	*GPIOB_AFRH= (*GPIOB_AFRL & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
+
+	*AHB1ENR|=(1U<<21U); //I2C1 Enable
+	/*The following is the required sequence in master mode.
+	• Program the peripheral input clock in I2C_CR2 register in order to generate correct
+	timings ----> OK
+	• Configure the clock control registers
+	• Configure the rise time register
+	• Program the I2C_CR1 register to enable the peripheral
+	• Set the START bit in the I2C_CR1 register to generate a Start condition*/
+
+	*I2C1_CR2=(0x16U); ////16Mhz ,Event+ERROR interrupt OFF
+	//*I2C1_CR2=(0x310U); //16Mhz ,Event+ERROR interrupt ON
+}
+
+
 
 void Error_Handler(void)
 {
