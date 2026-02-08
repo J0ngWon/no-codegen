@@ -187,6 +187,15 @@ int uart_fgets(char *msg ,uint32_t max_len){
 
 
 //PB9 SDA PB6 SCL
+
+/*The following is the required sequence in master mode.
+• Program the peripheral input clock in I2C_CR2 register in order to generate correct
+timings ----> OK
+• Configure the clock control registers
+• Configure the rise time register
+• Program the I2C_CR1 register to enable the peripheral
+• Set the START bit in the I2C_CR1 register to generate a Start condition*/
+
 void i2c1_init(void){
 	volatile uint32_t* GPIOB_MODER=
 				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x00U);
@@ -195,35 +204,41 @@ void i2c1_init(void){
 
 		//PB6
 		volatile uint32_t* GPIOB_AFRL=
-					(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x20U);
+				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x20U);
 		uint32_t const GPIO_AFRL_Mask = (0x4U << 24U);
 		uint32_t const GPIO_AFRL_ClearMask = ~(0xfU << 24U);
 
 		//PB9
 		volatile uint32_t* GPIOB_AFRH=
-							(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x24U);
+				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x24U);
 				uint32_t const GPIO_AFRH_Mask = (0x4U << 4U);
 				uint32_t const GPIO_AFRH_ClearMask = ~(0xfU << 4U);
 
-				volatile uint32_t* I2C1_CR2=
-								(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
+
+	   volatile uint32_t* GPIOB_OTYPER=
+				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x04U);
+
+	   volatile uint32_t* I2C1_CR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
+	   volatile uint32_t* I2C1_CCR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU);
+	   volatile uint32_t* I2C1_TRISE=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U);
+	   volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
 
 	GPIO_Enable(GPIO_PORT_B);
+	*APB1ENR|=(0x1U<<21U); //I2C1 Enable
+
 	*GPIOB_MODER= (*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+	*GPIOB_OTYPER|=(0x1U << 6U) | (0x1U << 9U);
+	//need pull up
 	*GPIOB_AFRL= (*GPIOB_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
-	*GPIOB_AFRH= (*GPIOB_AFRL & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
+	*GPIOB_AFRH= (*GPIOB_AFRH & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
 
-	*AHB1ENR|=(1U<<21U); //I2C1 Enable
-	/*The following is the required sequence in master mode.
-	• Program the peripheral input clock in I2C_CR2 register in order to generate correct
-	timings ----> OK
-	• Configure the clock control registers
-	• Configure the rise time register
-	• Program the I2C_CR1 register to enable the peripheral
-	• Set the START bit in the I2C_CR1 register to generate a Start condition*/
 
-	*I2C1_CR2=(0x16U); ////16Mhz ,Event+ERROR interrupt OFF
+	*I2C1_CR2=(0x10U); ////16Mhz ,Event+ERROR interrupt OFF
 	//*I2C1_CR2=(0x310U); //16Mhz ,Event+ERROR interrupt ON
+	*I2C1_CCR=(0x50U);
+	*I2C1_TRISE=(0x11U);
+	*I2C1_CR1|=(0x1U);
+	//*I2C1_CR1|=(0x1U << 8U); //start bit
 }
 
 
