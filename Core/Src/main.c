@@ -1,21 +1,11 @@
 #include <stdint.h>
-#include "f429zi_reg.h"
+
+#include "diy.h"
 
 void USART6_INIT(void);
 
-int GPIO_Enable(gpio_port_t port);
-void led_on(void);
-void led_off(void);
-void delay(uint32_t ms);
-int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
-int uart_putc(uint8_t msg);
-int uart_puts(const uint8_t* msg);
-int uart_getc(void);
-int uart_fgets(char *msg ,uint32_t max_len);
-void i2c1_init(void);
-
 int main(void){
-	char test[]="";
+
 
 	USART6_INIT();
 
@@ -23,7 +13,10 @@ int main(void){
 	uart_putc('k');
 	uart_putc('\n');
 
-
+	i2c1_init();
+	lcd_init();
+	lcd_set_cursor(0, 0);
+	lcd_puts("hi");
 
 	while(1){
 		/*uart_fgets(test,16);
@@ -190,7 +183,7 @@ int uart_fgets(char *msg ,uint32_t max_len){
 
 /*The following is the required sequence in master mode.
 • Program the peripheral input clock in I2C_CR2 register in order to generate correct
-timings ----> OK
+timings
 • Configure the clock control registers
 • Configure the rise time register
 • Program the I2C_CR1 register to enable the peripheral
@@ -217,18 +210,25 @@ void i2c1_init(void){
 
 	   volatile uint32_t* GPIOB_OTYPER=
 				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x04U);
+	   volatile uint32_t* GPIOB_PUPDR=
+	  				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x0CU);
 
 	   volatile uint32_t* I2C1_CR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
 	   volatile uint32_t* I2C1_CCR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU);
 	   volatile uint32_t* I2C1_TRISE=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U);
 	   volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
 
+	   uint32_t const PUPD_MASK =
+	       (0x3U << 12U) | (0x3U << 18U);
+	   uint32_t const PUPD_VAL  =
+	       (0x1U << 12U) | (0x1U << 18U);  //Pull Up!
+
 	GPIO_Enable(GPIO_PORT_B);
 	*APB1ENR|=(0x1U<<21U); //I2C1 Enable
 
 	*GPIOB_MODER= (*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
 	*GPIOB_OTYPER|=(0x1U << 6U) | (0x1U << 9U);
-	//need pull up
+	*GPIOB_PUPDR = (*GPIOB_PUPDR & ~PUPD_MASK) | PUPD_VAL;
 	*GPIOB_AFRL= (*GPIOB_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
 	*GPIOB_AFRH= (*GPIOB_AFRH & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
 
@@ -238,10 +238,42 @@ void i2c1_init(void){
 	*I2C1_CCR=(0x50U);
 	*I2C1_TRISE=(0x11U);
 	*I2C1_CR1|=(0x1U);
-	//*I2C1_CR1|=(0x1U << 8U); //start bit
+
 }
 
+int i2c1_master_tx(uint8_t addr_8bit ,uint8_t *data, int len){
+	volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
+	volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
+	volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
+	volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
 
+	*I2C1_CR1|=(0x1U << 8U); //start bit
+
+	while(((*I2C1_SR1)&0x1U)!=0x1U); //EV5  RF:852p
+	(void)*I2C1_SR1; //clear RF:871p SB
+
+	*I2C1_DR=addr_8bit;
+
+	while(((*I2C1_SR1)&0x2U)!=0x2U); //EV6
+	(void)*I2C1_SR1;
+	(void)*I2C1_SR2; //clear RF:871p ADDR
+
+	for(int i=0;i<len;i++){
+
+		if(((*I2C1_SR1)&(0x1U<<10U))== (0x1U<<10U)){ //AF(NACK)
+			*I2C1_CR1 |= (1U << 9);
+
+		return 1;
+	}
+	while(((*I2C1_SR1)&(0x1U<<7U))!= (0x1U<<7U)); //EV8_1
+	*I2C1_DR=*data;
+	data++;
+	}
+	//EV8_2: TXE != 1 or BTF !=1 --> wait
+	while( (((*I2C1_SR1)&(0x1U<<7U))!= (0x1U<<7U)) || (((*I2C1_SR1)&(0x1U<<2U))!= (0x1U<<2U)) );
+	*I2C1_CR1|=(0x1U << 9U); //stop bit
+	return 0;
+}
 
 void Error_Handler(void)
 {
