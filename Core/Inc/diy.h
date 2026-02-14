@@ -10,18 +10,28 @@
 
 #include "f429zi_reg.h"
 
+void USART6_INIT(void);
+
 int GPIO_Enable(gpio_port_t port);
 void led_on(void);
 void led_off(void);
-void delay(uint32_t ms);
+void old_delay(uint32_t ms);
 int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
+
 int uart_putc(uint8_t msg);
 int uart_puts(const uint8_t* msg);
 int uart_getc(void);
 int uart_fgets(char *msg ,uint32_t max_len);
+
 void i2c1_init(void);
 int i2c1_master_tx(uint8_t addr_8bit ,uint8_t *data, int len);
+int i2c1_master_rx(uint8_t addr_8bit,uint8_t* msg,int len);
+int i2c_SR1_ERR(void);
 
+void delay(uint32_t ms);
+uint32_t millis(void);
+void sys_init(void);
+extern volatile uint32_t sys_ms;
 
 //lcd
 void lcd_init(void);
