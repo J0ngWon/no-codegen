@@ -5,11 +5,21 @@
 #define MEGA_ADDR_8BIT (0x12U << 1U)
 #define timeout_ms 5000
 
+volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
+volatile uint32_t* I2C1_CR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
+volatile uint32_t* I2C1_CCR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU);
+volatile uint32_t* I2C1_TRISE=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U);
+volatile uint32_t* I2C1_OAR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x08U);
 
+volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
+volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
+volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
+
+//__asm volatile("BKPT #0");
 
 int main(void){
 
-	char msg[5]={0};
+	char msg[3]={'h','i','\n'};
 
 	sys_init();
 	USART6_INIT();
@@ -18,24 +28,39 @@ int main(void){
 	uart_putc('k');
 	uart_putc('\n');
 
-	i2c1_init();
-
-	i2c1_master_rx(MEGA_ADDR_8BIT,msg,5);
-
+	i2c1_init(1);
 	//__asm volatile("BKPT #0");
+	/*i2c1_master_rx(MEGA_ADDR_8BIT,msg,3);
+
+
 	lcd_init();
 	lcd_set_cursor(0, 0);
-	lcd_puts(msg);
+	lcd_puts(msg);*/
 
+	//i2c1_init(1);
 	while(1){
+		int ret = i2c1_slave_tx((uint8_t*)msg, 3);
+		/*
+	    uint32_t sr1 = *I2C1_SR1;
 
-		led_off();
+	    if (sr1 & (1U<<1)) { // ADDR
+	        uart_putc('A');
+	        (void)*I2C1_SR1;
+	        (void)*I2C1_SR2;
+	    }
+	    if (sr1 & (1U<<4)) { // STOPF
+	        uart_putc('S');
+	        (void)*I2C1_SR1;
+	        *I2C1_CR1 = *I2C1_CR1; // any write clears STOPF
+	    }*/
+
+		/*led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
-		delay(1000);
+		delay(100);
 
 		led_on();
 		GPIO_Write(GPIO_PORT_B,10,1);
-		delay(1000);
+		delay(100);*/
 	}
 }
 
@@ -198,7 +223,8 @@ timings
 • Program the I2C_CR1 register to enable the peripheral
 • Set the START bit in the I2C_CR1 register to generate a Start condition*/
 
-void i2c1_init(void){
+//MOD 0: Master , 1:Slave
+void i2c1_init(int mod){
 	volatile uint32_t* GPIOB_MODER=
 				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x00U);
 		uint32_t const GPIO_MOD_Mask = (0x82U << (2U * 6U));
@@ -222,10 +248,14 @@ void i2c1_init(void){
 	   volatile uint32_t* GPIOB_PUPDR=
 	  				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x0CU);
 
-	   volatile uint32_t* I2C1_CR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
-	   volatile uint32_t* I2C1_CCR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU);
-	   volatile uint32_t* I2C1_TRISE=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U);
-	   volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
+	   volatile uint32_t* GPIOB_OSPEEDR =
+	       (volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x08U);
+
+	   // PB6(12~13), PB9(18~19)
+	   uint32_t const OSPEED_MASK =
+	       (0x3U << (12U)) | (0x3U << (18U));
+	   uint32_t const OSPEED_VERYHIGH =
+	       (0x3U << (12U)) | (0x3U << (18U));
 
 	   uint32_t const PUPD_MASK =
 	       (0x3U << 12U) | (0x3U << 18U);
@@ -242,24 +272,35 @@ void i2c1_init(void){
 	*GPIOB_AFRH= (*GPIOB_AFRH & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
 
 
+	*GPIOB_OSPEEDR = (*GPIOB_OSPEEDR & ~OSPEED_MASK) | OSPEED_VERYHIGH;
+
+	*I2C1_CR1&=~(0x1U);
+
 	*I2C1_CR2=(0x10U); ////16Mhz ,Event+ERROR interrupt OFF
 	//*I2C1_CR2=(0x310U); //16Mhz ,Event+ERROR interrupt ON
 	*I2C1_CCR=(0x50U);
 	*I2C1_TRISE=(0x11U);
-	*I2C1_CR1|=(0x1U);
+	if(mod){
+		*I2C1_OAR1 = (1U<<14U) | (0x20<<1U); //ADDR = Ox20
 
+	}
+	*I2C1_CR1|=(0x1U);
+	if (mod) {
+		*I2C1_CR1 |= (1U << 10U);
+	}
 }
 
 int i2c1_master_tx(uint8_t addr_8bit ,uint8_t *data, int len){
-	volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
-	volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
-	volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
-	volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
+
 	uint32_t t0;
 
 	*I2C1_CR1|=(0x1U << 8U); //start bit
-
-	while(((*I2C1_SR1)&0x1U)!=0x1U); //EV5  RF:852p
+	t0=millis();
+	while(((*I2C1_SR1)&0x1U)!=0x1U) //EV5  RF:852p
+	{
+	 if(i2c_SR1_ERR()) return -1;
+	 if ((uint32_t)(millis() - t0) > timeout_ms) return -2;
+	}
 	(void)*I2C1_SR1; //clear RF:871p SB
 
 	*I2C1_DR=addr_8bit;
@@ -280,22 +321,28 @@ int i2c1_master_tx(uint8_t addr_8bit ,uint8_t *data, int len){
 			*I2C1_SR1 &= ~(1U << 10); // AF clear
 			return 1;
 		}
-		while (((*I2C1_SR1) & (0x1U << 7U)) != (0x1U << 7U))
-			; //EV8_1
+		t0=millis();
+		while (((*I2C1_SR1) & (0x1U << 7U)) != (0x1U << 7U)) //EV8_1
+		{
+		 if(i2c_SR1_ERR()) return -1;
+		 if ((uint32_t)(millis() - t0) > timeout_ms) return -2;
+		}
 		*I2C1_DR = *data;
 		data++;
 	}
+	t0=millis();
 	//EV8_2: TXE != 1 or BTF !=1 --> wait
-	while( (((*I2C1_SR1)&(0x1U<<7U))!= (0x1U<<7U)) || (((*I2C1_SR1)&(0x1U<<2U))!= (0x1U<<2U)) );
+	while( (((*I2C1_SR1)&(0x1U<<7U))!= (0x1U<<7U)) || (((*I2C1_SR1)&(0x1U<<2U))!= (0x1U<<2U)) )
+	{
+	 if(i2c_SR1_ERR()) return -1;
+	 if ((uint32_t)(millis() - t0) > timeout_ms) return -2;
+	}
 	*I2C1_CR1|=(0x1U << 9U); //stop bit
 	return 0;
 }
 
 int i2c1_master_rx(uint8_t addr_8bit,uint8_t* msg,int len){
-	volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
-	volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
-	volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
-	volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
+
 	uint32_t t0;
 
 	*I2C1_CR1|=(0x1U << 10U); //SET CR1 ACK
@@ -322,7 +369,12 @@ int i2c1_master_rx(uint8_t addr_8bit,uint8_t* msg,int len){
 		*I2C1_CR1 |= (0x1U << 11U); //POS HIGH
 		(void) *I2C1_SR1;
 		(void) *I2C1_SR2; //clear RF:871p ADDR
-		while (((*I2C1_SR1) & (0x1U << 2U)) == 0);
+		t0=millis();
+		while (((*I2C1_SR1) & (0x1U << 2U)) == 0)
+		{
+					 if(i2c_SR1_ERR()) return -1;
+					 if ((uint32_t)(millis() - t0) > timeout_ms) return -2;
+		}
 		*I2C1_CR1 |= (0x1U << 9U); //stop bit
 		*msg = *I2C1_DR;
 		msg++;
@@ -366,12 +418,77 @@ int i2c1_master_rx(uint8_t addr_8bit,uint8_t* msg,int len){
 		*msg = *I2C1_DR; // READ len
 	}
 	*I2C1_CR1|=(0x1U << 10U); //SET CR1 ACK
+	return 0;
+}
+
+int i2c1_slave_tx(uint8_t *data, int len){
+
+	uint32_t t0 = millis();
+
+	while (((*I2C1_SR1) & (0x1U << 1U)) == 0) { //EV1
+		if (i2c_SR1_ERR())
+			return -1;
+		if ((uint32_t) (millis() - t0) > timeout_ms)
+			return -2;
+	}
+	(void)*I2C1_SR1;
+	(void)*I2C1_SR2; //ADDR Clear
+
+	if ((*I2C1_SR2 & (1U<<2)) == 0) {   // TRA==0 => Receiver
+		t0 = millis();
+		while (((*I2C1_SR1) & (1U << 4)) == 0) {   // STOPF
+
+			if ((*I2C1_SR1) & (1U << 6)) {
+				(void) *I2C1_DR;
+			}
+			if (i2c_SR1_ERR())
+				return -1;
+			if ((uint32_t) (millis() - t0) > timeout_ms)
+				return -2;
+		}
+
+		// STOPF clear sequence
+		(void) *I2C1_SR1;
+		*I2C1_CR1 |= (1U << 0);
+		return -3;
+	}
+
+	for(int i=0;i<len;i++){
+	t0 = millis();
+	while (((*I2C1_SR1) & (0x1U << 7U)) == 0) { //EV3
+		if (i2c_SR1_ERR())
+			return -1;
+		if ((uint32_t) (millis() - t0) > timeout_ms)
+			return -2;
+	}
+	*I2C1_DR=*data;
+	data++;
+	}
+	t0 = millis();
+		while (((*I2C1_SR1) & (0x1U << 10U)) == 0) { //EV3-2
+			if (i2c_SR1_ERR())
+				return -1;
+			if ((uint32_t) (millis() - t0) > timeout_ms)
+				return -2;
+		}
+	*I2C1_SR1&=~(0x1U << 10U); //AF Clear
+	while (((*I2C1_SR1) & (0x1U << 4U)) == 0) {
+		if (i2c_SR1_ERR())
+			return -1;
+		if ((uint32_t) (millis() - t0) > timeout_ms)
+			return -2;
+	}
+
+	//STOPF clear
+	(void)*I2C1_SR1;
+	*I2C1_CR1 |= (1U<<0);
+
+	return 0;
 
 }
 
 int i2c_SR1_ERR(void) {
-	volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
-	volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
+
 
 	if ((*I2C1_SR1 & (1U << 10)) || (*I2C1_SR1 & (1U << 9)) || (*I2C1_SR1 & (1U << 8))) {  // AF,ARLO,BERR
 		*I2C1_SR1 &= ~(1U << 10); // AF clear
