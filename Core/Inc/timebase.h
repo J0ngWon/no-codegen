@@ -10,8 +10,11 @@
 
 #include <stdint.h>
 
+void sys_init(uint32_t tick_hz);
 void timebase_isr_tick(void);
 void delay(uint32_t ms);
 uint32_t millis(void);
+
+void old_sys_init(void);
 
 #endif /* INC_TIMBASE_H_ */

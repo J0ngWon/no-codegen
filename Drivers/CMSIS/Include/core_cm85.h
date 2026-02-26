@@ -328,13 +328,13 @@ typedef union
   struct
   {
     uint32_t _reserved0:16;              /*!< bit:  0..15  Reserved */
-    uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal flags */
+    uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal sets */
     uint32_t _reserved1:7;               /*!< bit: 20..26  Reserved */
-    uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag */
-    uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
-    uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
-    uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
-    uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
+    uint32_t Q:1;                        /*!< bit:     27  Saturation condition set */
+    uint32_t V:1;                        /*!< bit:     28  Overflow condition code set */
+    uint32_t C:1;                        /*!< bit:     29  Carry condition code set */
+    uint32_t Z:1;                        /*!< bit:     30  Zero condition code set */
+    uint32_t N:1;                        /*!< bit:     31  Negative condition code set */
   } b;                                   /*!< Structure used for bit  access */
   uint32_t w;                            /*!< Type      used for word access */
 } APSR_Type;
@@ -386,17 +386,17 @@ typedef union
   {
     uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number */
     uint32_t _reserved0:7;               /*!< bit:  9..15  Reserved */
-    uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal flags */
+    uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal sets */
     uint32_t _reserved1:1;               /*!< bit:     20  Reserved */
     uint32_t B:1;                        /*!< bit:     21  BTI active       (read 0) */
     uint32_t _reserved2:2;               /*!< bit: 22..23  Reserved */
     uint32_t T:1;                        /*!< bit:     24  Thumb bit        (read 0) */
     uint32_t IT:2;                       /*!< bit: 25..26  saved IT state   (read 0) */
-    uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag */
-    uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
-    uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
-    uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
-    uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
+    uint32_t Q:1;                        /*!< bit:     27  Saturation condition set */
+    uint32_t V:1;                        /*!< bit:     28  Overflow condition code set */
+    uint32_t C:1;                        /*!< bit:     29  Carry condition code set */
+    uint32_t Z:1;                        /*!< bit:     30  Zero condition code set */
+    uint32_t N:1;                        /*!< bit:     31  Negative condition code set */
   } b;                                   /*!< Structure used for bit  access */
   uint32_t w;                            /*!< Type      used for word access */
 } xPSR_Type;
@@ -1073,8 +1073,8 @@ typedef struct
 } SysTick_Type;
 
 /* SysTick Control / Status Register Definitions */
-#define SysTick_CTRL_COUNTFLAG_Pos         16U                                            /*!< SysTick CTRL: COUNTFLAG Position */
-#define SysTick_CTRL_COUNTFLAG_Msk         (1UL << SysTick_CTRL_COUNTFLAG_Pos)            /*!< SysTick CTRL: COUNTFLAG Mask */
+#define SysTick_CTRL_COUNTset_Pos         16U                                            /*!< SysTick CTRL: COUNTset Position */
+#define SysTick_CTRL_COUNTset_Msk         (1UL << SysTick_CTRL_COUNTset_Pos)            /*!< SysTick CTRL: COUNTset Mask */
 
 #define SysTick_CTRL_CLKSOURCE_Pos          2U                                            /*!< SysTick CTRL: CLKSOURCE Position */
 #define SysTick_CTRL_CLKSOURCE_Msk         (1UL << SysTick_CTRL_CLKSOURCE_Pos)            /*!< SysTick CTRL: CLKSOURCE Mask */
@@ -1882,11 +1882,11 @@ typedef struct
         uint32_t RESERVED6[7];
   __IOM uint32_t INTENCLR;                          /*!< Offset: 0xC60 (R/W)  PMU Interrupt Enable Clear Register */
         uint32_t RESERVED7[7];
-  __IOM uint32_t OVSCLR;                            /*!< Offset: 0xC80 (R/W)  PMU Overflow Flag Status Clear Register */
+  __IOM uint32_t OVSCLR;                            /*!< Offset: 0xC80 (R/W)  PMU Overflow set Status Clear Register */
         uint32_t RESERVED8[7];
   __IOM uint32_t SWINC;                             /*!< Offset: 0xCA0 (R/W)  PMU Software Increment Register */
         uint32_t RESERVED9[7];
-  __IOM uint32_t OVSSET;                            /*!< Offset: 0xCC0 (R/W)  PMU Overflow Flag Status Set Register */
+  __IOM uint32_t OVSSET;                            /*!< Offset: 0xCC0 (R/W)  PMU Overflow set Status Set Register */
         uint32_t RESERVED10[79];
   __IOM uint32_t TYPE;                              /*!< Offset: 0xE00 (R/W)  PMU Type Register */
   __IOM uint32_t CTRL;                              /*!< Offset: 0xE04 (R/W)  PMU Control Register */
@@ -2309,7 +2309,7 @@ typedef struct
 #define PMU_INTENCLR_CYCCNT_ENABLE_Pos        31U                                          /*!< PMU INTENCLR: Cycle Counter Interrupt Enable Clear Position */
 #define PMU_INTENCLR_CYCCNT_ENABLE_Msk       (1UL << PMU_INTENCLR_CYCCNT_ENABLE_Pos)       /*!< PMU INTENCLR: Cycle Counter Interrupt Enable Clear Mask */
 
-/** \brief PMU Overflow Flag Status Set Register Definitions */
+/** \brief PMU Overflow set Status Set Register Definitions */
 
 #define PMU_OVSSET_CNT0_STATUS_Pos            0U                                           /*!< PMU OVSSET: Event Counter 0 Overflow Set Position */
 #define PMU_OVSSET_CNT0_STATUS_Msk           (1UL /*<< PMU_OVSSET_CNT0_STATUS_Pos*/)       /*!< PMU OVSSET: Event Counter 0 Overflow Set Mask */
@@ -2407,7 +2407,7 @@ typedef struct
 #define PMU_OVSSET_CYCCNT_STATUS_Pos          31U                                          /*!< PMU OVSSET: Cycle Counter Overflow Set Position */
 #define PMU_OVSSET_CYCCNT_STATUS_Msk         (1UL << PMU_OVSSET_CYCCNT_STATUS_Pos)         /*!< PMU OVSSET: Cycle Counter Overflow Set Mask */
 
-/** \brief PMU Overflow Flag Status Clear Register Definitions */
+/** \brief PMU Overflow set Status Clear Register Definitions */
 
 #define PMU_OVSCLR_CNT0_STATUS_Pos            0U                                           /*!< PMU OVSCLR: Event Counter 0 Overflow Clear Position */
 #define PMU_OVSCLR_CNT0_STATUS_Msk           (1UL /*<< PMU_OVSCLR_CNT0_STATUS_Pos*/)       /*!< PMU OVSCLR: Event Counter 0 Overflow Clear Mask */

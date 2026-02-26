@@ -117,10 +117,10 @@ int _lseek(int file, int ptr, int dir)
   return 0;
 }
 
-int _open(char *path, int flags, ...)
+int _open(char *path, int sets, ...)
 {
   (void)path;
-  (void)flags;
+  (void)sets;
   /* Pretend like we always fail */
   return -1;
 }

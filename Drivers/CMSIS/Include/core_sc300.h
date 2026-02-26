@@ -213,11 +213,11 @@ typedef union
   struct
   {
     uint32_t _reserved0:27;              /*!< bit:  0..26  Reserved */
-    uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag */
-    uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
-    uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
-    uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
-    uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
+    uint32_t Q:1;                        /*!< bit:     27  Saturation condition set */
+    uint32_t V:1;                        /*!< bit:     28  Overflow condition code set */
+    uint32_t C:1;                        /*!< bit:     29  Carry condition code set */
+    uint32_t Z:1;                        /*!< bit:     30  Zero condition code set */
+    uint32_t N:1;                        /*!< bit:     31  Negative condition code set */
   } b;                                   /*!< Structure used for bit  access */
   uint32_t w;                            /*!< Type      used for word access */
 } APSR_Type;
@@ -270,11 +270,11 @@ typedef union
     uint32_t _reserved1:8;               /*!< bit: 16..23  Reserved */
     uint32_t T:1;                        /*!< bit:     24  Thumb bit */
     uint32_t ICI_IT_2:2;                 /*!< bit: 25..26  ICI/IT part 2 */
-    uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag */
-    uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
-    uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
-    uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
-    uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
+    uint32_t Q:1;                        /*!< bit:     27  Saturation condition set */
+    uint32_t V:1;                        /*!< bit:     28  Overflow condition code set */
+    uint32_t C:1;                        /*!< bit:     29  Carry condition code set */
+    uint32_t Z:1;                        /*!< bit:     30  Zero condition code set */
+    uint32_t N:1;                        /*!< bit:     31  Negative condition code set */
   } b;                                   /*!< Structure used for bit  access */
   uint32_t w;                            /*!< Type      used for word access */
 } xPSR_Type;
@@ -697,8 +697,8 @@ typedef struct
 } SysTick_Type;
 
 /* SysTick Control / Status Register Definitions */
-#define SysTick_CTRL_COUNTFLAG_Pos         16U                                            /*!< SysTick CTRL: COUNTFLAG Position */
-#define SysTick_CTRL_COUNTFLAG_Msk         (1UL << SysTick_CTRL_COUNTFLAG_Pos)            /*!< SysTick CTRL: COUNTFLAG Mask */
+#define SysTick_CTRL_COUNTset_Pos         16U                                            /*!< SysTick CTRL: COUNTset Position */
+#define SysTick_CTRL_COUNTset_Msk         (1UL << SysTick_CTRL_COUNTset_Pos)            /*!< SysTick CTRL: COUNTset Mask */
 
 #define SysTick_CTRL_CLKSOURCE_Pos          2U                                            /*!< SysTick CTRL: CLKSOURCE Position */
 #define SysTick_CTRL_CLKSOURCE_Msk         (1UL << SysTick_CTRL_CLKSOURCE_Pos)            /*!< SysTick CTRL: CLKSOURCE Mask */

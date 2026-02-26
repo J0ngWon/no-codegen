@@ -10,15 +10,19 @@
 
 #include <stdint.h>
 
-
+/* ===== FLASH ===== */
+#define FLASH_ACR ((volatile uint32_t *)(0x40023C00U + 0x00U))
 
 /* ===== RCC ===== */
 
 #define RCC_BASE        (volatile uint32_t *)(0x40023800U)
+
+#define RCC_CR          (volatile uint32_t *)(0x40023800U)
+#define RCC_PLLCFGR        (volatile uint32_t *)(0x40023800U+0x04U)
 #define RCC_CFGR        (volatile uint32_t *)(0x40023800U+0x08U)
 
-#define AHB1ENR         ((volatile uint32_t *)(0x40023800U + 0x30U))
 
+#define AHB1ENR         ((volatile uint32_t *)(0x40023800U + 0x30U))
 #define APB1ENR         ((volatile uint32_t *)(0x40023800U + 0x40U))
 #define APB2ENR         ((volatile uint32_t *)(0x40023800U + 0x44U))
 

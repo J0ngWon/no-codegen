@@ -15,52 +15,31 @@ volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
 volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
 volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
 
+
 //__asm volatile("BKPT #0");
 
 int main(void){
 
 	char msg[3]={'h','i','\n'};
 
-	sys_init();
+	clock_hse_pll();
+	sys_init(1000);
 	USART6_INIT();
 
 	uart_putc('o');
 	uart_putc('k');
 	uart_putc('\n');
 
-	i2c1_init(1);
-	//__asm volatile("BKPT #0");
-	/*i2c1_master_rx(MEGA_ADDR_8BIT,msg,3);
 
-
-	lcd_init();
-	lcd_set_cursor(0, 0);
-	lcd_puts(msg);*/
-
-	//i2c1_init(1);
 	while(1){
-		int ret = i2c1_slave_tx((uint8_t*)msg, 3);
-		/*
-	    uint32_t sr1 = *I2C1_SR1;
 
-	    if (sr1 & (1U<<1)) { // ADDR
-	        uart_putc('A');
-	        (void)*I2C1_SR1;
-	        (void)*I2C1_SR2;
-	    }
-	    if (sr1 & (1U<<4)) { // STOPF
-	        uart_putc('S');
-	        (void)*I2C1_SR1;
-	        *I2C1_CR1 = *I2C1_CR1; // any write clears STOPF
-	    }*/
-
-		/*led_off();
+		led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
 		delay(100);
 
 		led_on();
 		GPIO_Write(GPIO_PORT_B,10,1);
-		delay(100);*/
+		delay(100);
 	}
 }
 
@@ -500,11 +479,6 @@ int i2c_SR1_ERR(void) {
 	return 0;
 }
 
-void sys_init(void){
-	*STK_LOAD = 0x3e7fU;
-	*STK_VAL  = 0U;
-	*STK_CTRL = 0x7U;
-}
 
 
 

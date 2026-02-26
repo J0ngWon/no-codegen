@@ -185,7 +185,7 @@ typedef enum
 {
   RESET = 0U,
   SET = !RESET
-} FlagStatus, ITStatus;
+} setStatus, ITStatus;
 
 typedef enum
 {
