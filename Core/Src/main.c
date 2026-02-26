@@ -506,15 +506,6 @@ void sys_init(void){
 	*STK_CTRL = 0x7U;
 }
 
-void delay(uint32_t ms){
-	uint32_t start = millis();
-	while ((uint32_t)(millis() - start) < ms) { }
-}
-
-
-uint32_t millis(void){
-	return sys_ms;
-}
 
 
 
