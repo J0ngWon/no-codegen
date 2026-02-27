@@ -6,6 +6,79 @@
  */
 #include "clock.h"
 
+#define HSE_HZ 8000000U;
+#define HSI_HZ 16000000U;
+
+static const uint8_t apb_tbl[8] = {
+	    1,  // 000 -> /1
+	    1,  // 001 -> /1
+	    1,  // 010 -> /1
+	    1,  // 011 -> /1
+	    2,  // 100 -> /2
+	    4,  // 101 -> /4
+	    8,  // 110 -> /8
+	    16  // 111 -> /16
+	};
+	static const uint16_t ahb_tbl[16] = {
+	    1,   // 0000 -> /1
+	    1,   // 0001 -> /1
+	    1,   // 0010 -> /1
+	    1,   // 0011 -> /1
+	    1,   // 0100 -> /1
+	    1,   // 0101 -> /1
+	    1,   // 0110 -> /1
+	    1,   // 0111 -> /1
+	    2,   // 1000 -> /2
+	    4,   // 1001 -> /4
+	    8,   // 1010 -> /8
+	    16,  // 1011 -> /16
+	    64,  // 1100 -> /64
+	    128, // 1101 -> /128
+	    256, // 1110 -> /256
+	    512  // 1111 -> /512
+	};
+	static const uint16_t pllp_tbl[4] = {
+	    2, 4, 6, 8   // RM0090 166p
+	};
+static uint32_t j_hclk  = 0U;
+static uint32_t j_pclk1 = 0U;
+static uint32_t j_pclk2 = 0U;
+
+uint32_t get_hclk(void){return j_hclk;}
+
+uint32_t get_pclk1(void){return j_pclk1;}
+
+uint32_t get_pclk2(void){return j_pclk2;}
+
+int clock_update(void) {
+	uint32_t num,pll_m = 0, pll_n = 0, pll_p = 0, source_clk = 0,vco=0,pll_output;
+	num=(*RCC_CFGR &(3U << 2))>>2;
+	switch (num) {
+
+	case 2: //PLL
+		pll_m = (*RCC_PLLCFGR & 0x3fU);
+		pll_n = (*RCC_PLLCFGR & (0x1ffU << 6U))>>6U;
+		pll_p = pllp_tbl[(*RCC_PLLCFGR & (0x3U << 16U))>>16U];
+		if (*RCC_PLLCFGR & (1U << 22U)){
+			source_clk = HSE_HZ;
+		}
+		else{
+			source_clk = HSI_HZ;
+		}
+		vco=source_clk*pll_n/pll_m;
+		pll_output=vco/pll_p;
+		j_hclk=pll_output/ahb_tbl[(*RCC_CFGR&(0xfU<<4U))>>4U];
+
+		j_pclk1=j_hclk/apb_tbl[(*RCC_CFGR&(7U<<10U))>>10U];
+
+		j_pclk2=j_hclk/apb_tbl[(*RCC_CFGR&(7U<<13U))>>13U];
+
+		return 0;
+	default:
+		return -1;
+	}
+}
+
 int hse_enable(void){
 	*RCC_CR&=~(1U<<18U);
 	*RCC_CR|=(1U<<16U);
@@ -14,7 +87,7 @@ int hse_enable(void){
 
 	return 0;
 }
-int clock_hse_pll(void){
+int clock_hse_pll_168(void){
 	if(hse_enable()){
 		return -1;
 	}
@@ -44,6 +117,7 @@ int clock_hse_pll(void){
 	if (wait_set(RCC_CFGR, (1U << 2), 3000000U) < 0) return -2;
 	if (wait_clear(RCC_CFGR, (1U << 3), 3000000U) < 0) return -2;
 
+	clock_update();
 	return 0;
 
 }

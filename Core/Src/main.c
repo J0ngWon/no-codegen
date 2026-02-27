@@ -22,7 +22,7 @@ int main(void){
 
 	char msg[3]={'h','i','\n'};
 
-	clock_hse_pll();
+	clock_hse_pll_168();
 	sys_init(1000);
 	USART6_INIT();
 
@@ -30,6 +30,11 @@ int main(void){
 	uart_putc('k');
 	uart_putc('\n');
 
+	i2c1_init(0);
+
+	lcd_init();
+	lcd_set_cursor(0, 0);
+	lcd_puts(msg);
 
 	while(1){
 
@@ -255,10 +260,14 @@ void i2c1_init(int mod){
 
 	*I2C1_CR1&=~(0x1U);
 
-	*I2C1_CR2=(0x10U); ////16Mhz ,Event+ERROR interrupt OFF
-	//*I2C1_CR2=(0x310U); //16Mhz ,Event+ERROR interrupt ON
+/*  *I2C1_CR2=(0x10U); ////16Mhz ,Event+ERROR interrupt OFF
 	*I2C1_CCR=(0x50U);
-	*I2C1_TRISE=(0x11U);
+	*I2C1_TRISE=(0x11U); */
+
+	*I2C1_CR2   = (get_pclk1()/1000000U);
+	*I2C1_CCR   = (get_pclk1()/200000U); //Sm: CCR = fpclk1 / (2*fscl) (Thigh=Tlow=CCR*T_pclk1)
+	*I2C1_TRISE = (get_pclk1()/1000000U)+1U;
+
 	if(mod){
 		*I2C1_OAR1 = (1U<<14U) | (0x20<<1U); //ADDR = Ox20
 

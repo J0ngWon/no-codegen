@@ -16,7 +16,7 @@ void timebase_isr_tick(void){
 
 void sys_init(uint32_t tick_hz)
 {
-    uint32_t hclk = 168000000;
+    uint32_t hclk = get_hclk();
     uint32_t reload = (hclk / tick_hz) - 1U;
 
     *STK_LOAD = reload;
