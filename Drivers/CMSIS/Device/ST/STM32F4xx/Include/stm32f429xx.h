@@ -14021,52 +14021,52 @@ typedef struct
 /*         Universal Synchronous Asynchronous Receiver Transmitter            */
 /*                                                                            */
 /******************************************************************************/
-/*******************  Bit definition for USART_SR register  *******************/
-#define USART_SR_PE_Pos               (0U)
-#define USART_SR_PE_Msk               (0x1UL << USART_SR_PE_Pos)                /*!< 0x00000001 */
-#define USART_SR_PE                   USART_SR_PE_Msk                          /*!<Parity Error                 */
-#define USART_SR_FE_Pos               (1U)
-#define USART_SR_FE_Msk               (0x1UL << USART_SR_FE_Pos)                /*!< 0x00000002 */
-#define USART_SR_FE                   USART_SR_FE_Msk                          /*!<Framing Error                */
-#define USART_SR_NE_Pos               (2U)
-#define USART_SR_NE_Msk               (0x1UL << USART_SR_NE_Pos)                /*!< 0x00000004 */
-#define USART_SR_NE                   USART_SR_NE_Msk                          /*!<Noise Error set             */
-#define USART_SR_ORE_Pos              (3U)
-#define USART_SR_ORE_Msk              (0x1UL << USART_SR_ORE_Pos)               /*!< 0x00000008 */
-#define USART_SR_ORE                  USART_SR_ORE_Msk                         /*!<OverRun Error                */
-#define USART_SR_IDLE_Pos             (4U)
-#define USART_SR_IDLE_Msk             (0x1UL << USART_SR_IDLE_Pos)              /*!< 0x00000010 */
-#define USART_SR_IDLE                 USART_SR_IDLE_Msk                        /*!<IDLE line detected           */
-#define USART_SR_RXNE_Pos             (5U)
-#define USART_SR_RXNE_Msk             (0x1UL << USART_SR_RXNE_Pos)              /*!< 0x00000020 */
-#define USART_SR_RXNE                 USART_SR_RXNE_Msk                        /*!<Read Data Register Not Empty */
-#define USART_SR_TC_Pos               (6U)
-#define USART_SR_TC_Msk               (0x1UL << USART_SR_TC_Pos)                /*!< 0x00000040 */
-#define USART_SR_TC                   USART_SR_TC_Msk                          /*!<Transmission Complete        */
-#define USART_SR_TXE_Pos              (7U)
-#define USART_SR_TXE_Msk              (0x1UL << USART_SR_TXE_Pos)               /*!< 0x00000080 */
-#define USART_SR_TXE                  USART_SR_TXE_Msk                         /*!<Transmit Data Register Empty */
-#define USART_SR_LBD_Pos              (8U)
-#define USART_SR_LBD_Msk              (0x1UL << USART_SR_LBD_Pos)               /*!< 0x00000100 */
-#define USART_SR_LBD                  USART_SR_LBD_Msk                         /*!<LIN Break Detection set     */
-#define USART_SR_CTS_Pos              (9U)
-#define USART_SR_CTS_Msk              (0x1UL << USART_SR_CTS_Pos)               /*!< 0x00000200 */
-#define USART_SR_CTS                  USART_SR_CTS_Msk                         /*!<CTS set                     */
+/*******************  Bit definition for USART6_SR register  *******************/
+#define USART6_SR_PE_Pos               (0U)
+#define USART6_SR_PE_Msk               (0x1UL << USART6_SR_PE_Pos)                /*!< 0x00000001 */
+#define USART6_SR_PE                   USART6_SR_PE_Msk                          /*!<Parity Error                 */
+#define USART6_SR_FE_Pos               (1U)
+#define USART6_SR_FE_Msk               (0x1UL << USART6_SR_FE_Pos)                /*!< 0x00000002 */
+#define USART6_SR_FE                   USART6_SR_FE_Msk                          /*!<Framing Error                */
+#define USART6_SR_NE_Pos               (2U)
+#define USART6_SR_NE_Msk               (0x1UL << USART6_SR_NE_Pos)                /*!< 0x00000004 */
+#define USART6_SR_NE                   USART6_SR_NE_Msk                          /*!<Noise Error set             */
+#define USART6_SR_ORE_Pos              (3U)
+#define USART6_SR_ORE_Msk              (0x1UL << USART6_SR_ORE_Pos)               /*!< 0x00000008 */
+#define USART6_SR_ORE                  USART6_SR_ORE_Msk                         /*!<OverRun Error                */
+#define USART6_SR_IDLE_Pos             (4U)
+#define USART6_SR_IDLE_Msk             (0x1UL << USART6_SR_IDLE_Pos)              /*!< 0x00000010 */
+#define USART6_SR_IDLE                 USART6_SR_IDLE_Msk                        /*!<IDLE line detected           */
+#define USART6_SR_RXNE_Pos             (5U)
+#define USART6_SR_RXNE_Msk             (0x1UL << USART6_SR_RXNE_Pos)              /*!< 0x00000020 */
+#define USART6_SR_RXNE                 USART6_SR_RXNE_Msk                        /*!<Read Data Register Not Empty */
+#define USART6_SR_TC_Pos               (6U)
+#define USART6_SR_TC_Msk               (0x1UL << USART6_SR_TC_Pos)                /*!< 0x00000040 */
+#define USART6_SR_TC                   USART6_SR_TC_Msk                          /*!<Transmission Complete        */
+#define USART6_SR_TXE_Pos              (7U)
+#define USART6_SR_TXE_Msk              (0x1UL << USART6_SR_TXE_Pos)               /*!< 0x00000080 */
+#define USART6_SR_TXE                  USART6_SR_TXE_Msk                         /*!<Transmit Data Register Empty */
+#define USART6_SR_LBD_Pos              (8U)
+#define USART6_SR_LBD_Msk              (0x1UL << USART6_SR_LBD_Pos)               /*!< 0x00000100 */
+#define USART6_SR_LBD                  USART6_SR_LBD_Msk                         /*!<LIN Break Detection set     */
+#define USART6_SR_CTS_Pos              (9U)
+#define USART6_SR_CTS_Msk              (0x1UL << USART6_SR_CTS_Pos)               /*!< 0x00000200 */
+#define USART6_SR_CTS                  USART6_SR_CTS_Msk                         /*!<CTS set                     */
 
-/*******************  Bit definition for USART_DR register  *******************/
-#define USART_DR_DR_Pos               (0U)
-#define USART_DR_DR_Msk               (0x1FFUL << USART_DR_DR_Pos)              /*!< 0x000001FF */
-#define USART_DR_DR                   USART_DR_DR_Msk                          /*!<Data value */
+/*******************  Bit definition for USART6_DR register  *******************/
+#define USART6_DR_DR_Pos               (0U)
+#define USART6_DR_DR_Msk               (0x1FFUL << USART6_DR_DR_Pos)              /*!< 0x000001FF */
+#define USART6_DR_DR                   USART6_DR_DR_Msk                          /*!<Data value */
 
-/******************  Bit definition for USART_BRR register  *******************/
-#define USART_BRR_DIV_Fraction_Pos    (0U)
-#define USART_BRR_DIV_Fraction_Msk    (0xFUL << USART_BRR_DIV_Fraction_Pos)     /*!< 0x0000000F */
-#define USART_BRR_DIV_Fraction        USART_BRR_DIV_Fraction_Msk               /*!<Fraction of USARTDIV */
-#define USART_BRR_DIV_Mantissa_Pos    (4U)
-#define USART_BRR_DIV_Mantissa_Msk    (0xFFFUL << USART_BRR_DIV_Mantissa_Pos)   /*!< 0x0000FFF0 */
-#define USART_BRR_DIV_Mantissa        USART_BRR_DIV_Mantissa_Msk               /*!<Mantissa of USARTDIV */
+/******************  Bit definition for USART6_BRR register  *******************/
+#define USART6_BRR_DIV_Fraction_Pos    (0U)
+#define USART6_BRR_DIV_Fraction_Msk    (0xFUL << USART6_BRR_DIV_Fraction_Pos)     /*!< 0x0000000F */
+#define USART6_BRR_DIV_Fraction        USART6_BRR_DIV_Fraction_Msk               /*!<Fraction of USARTDIV */
+#define USART6_BRR_DIV_Mantissa_Pos    (4U)
+#define USART6_BRR_DIV_Mantissa_Msk    (0xFFFUL << USART6_BRR_DIV_Mantissa_Pos)   /*!< 0x0000FFF0 */
+#define USART6_BRR_DIV_Mantissa        USART6_BRR_DIV_Mantissa_Msk               /*!<Mantissa of USARTDIV */
 
-/******************  Bit definition for USART_CR1 register  *******************/
+/******************  Bit definition for USART6_CR1 register  *******************/
 #define USART_CR1_SBK_Pos             (0U)
 #define USART_CR1_SBK_Msk             (0x1UL << USART_CR1_SBK_Pos)              /*!< 0x00000001 */
 #define USART_CR1_SBK                 USART_CR1_SBK_Msk                        /*!<Send Break                             */
@@ -14113,7 +14113,7 @@ typedef struct
 #define USART_CR1_OVER8_Msk           (0x1UL << USART_CR1_OVER8_Pos)            /*!< 0x00008000 */
 #define USART_CR1_OVER8               USART_CR1_OVER8_Msk                      /*!<USART Oversampling by 8 enable         */
 
-/******************  Bit definition for USART_CR2 register  *******************/
+/******************  Bit definition for USART6_CR2register  *******************/
 #define USART_CR2_ADD_Pos             (0U)
 #define USART_CR2_ADD_Msk             (0xFUL << USART_CR2_ADD_Pos)              /*!< 0x0000000F */
 #define USART_CR2_ADD                 USART_CR2_ADD_Msk                        /*!<Address of the USART node            */

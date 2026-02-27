@@ -40,11 +40,11 @@
 /* ===== USART6 ===== */
 #define USART6_BASE     ((volatile uint32_t *)(0x40011400U + 0x00U))
 
-#define USART_CR1   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x0CU))
-#define USART_CR2   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x10U))
-#define USART_BRR   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x08U))
-#define USART_DR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x04U))
-#define USART_SR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x00U))
+#define USART6_CR1   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x0CU))
+#define USART6_CR2  ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x10U))
+#define USART6_BRR   ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x08U))
+#define USART6_DR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x04U))
+#define USART6_SR    ((volatile uint32_t *)((uintptr_t)USART6_BASE + 0x00U))
 
 /* ===== I2C ===== */
 #define I2C1_BASE   (volatile uint32_t *)(0x40005400)

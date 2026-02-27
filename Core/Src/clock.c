@@ -6,8 +6,10 @@
  */
 #include "clock.h"
 
-#define HSE_HZ 8000000U;
-#define HSI_HZ 16000000U;
+#define HSE_HZ 8000000U
+#define LSE_HZ 32768U
+#define HSI_HZ 16000000U
+
 
 static const uint8_t apb_tbl[8] = {
 	    1,  // 000 -> /1
@@ -51,10 +53,28 @@ uint32_t get_pclk1(void){return j_pclk1;}
 uint32_t get_pclk2(void){return j_pclk2;}
 
 int clock_update(void) {
-	uint32_t num,pll_m = 0, pll_n = 0, pll_p = 0, source_clk = 0,vco=0,pll_output;
-	num=(*RCC_CFGR &(3U << 2))>>2;
+	uint32_t num,pll_m = 0, pll_n = 0, pll_p = 0, source_clk = 0,vco=0,pll_output=0,sys_clk=0;
+	num=(*RCC_CFGR &(3U << 2))>>2; //00:HSI 10:HSE 10:PLL
 	switch (num) {
+	case 0:
+		sys_clk= HSI_HZ
+		;
+		j_hclk = sys_clk / ahb_tbl[(*RCC_CFGR & (0xfU << 4U)) >> 4U];
 
+		j_pclk1 = j_hclk / apb_tbl[(*RCC_CFGR & (7U << 10U)) >> 10U];
+
+		j_pclk2 = j_hclk / apb_tbl[(*RCC_CFGR & (7U << 13U)) >> 13U];
+		return 0;
+	case 1:
+		sys_clk = HSE_HZ
+		;
+		j_hclk = sys_clk / ahb_tbl[(*RCC_CFGR & (0xfU << 4U)) >> 4U];
+
+		j_pclk1 = j_hclk / apb_tbl[(*RCC_CFGR & (7U << 10U)) >> 10U];
+
+		j_pclk2 = j_hclk / apb_tbl[(*RCC_CFGR & (7U << 13U)) >> 13U];
+
+		return 0;
 	case 2: //PLL
 		pll_m = (*RCC_PLLCFGR & 0x3fU);
 		pll_n = (*RCC_PLLCFGR & (0x1ffU << 6U))>>6U;
