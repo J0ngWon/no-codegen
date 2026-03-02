@@ -20,6 +20,7 @@
 #define RCC_CR          (volatile uint32_t *)(0x40023800U)
 #define RCC_PLLCFGR        (volatile uint32_t *)(0x40023800U+0x04U)
 #define RCC_CFGR        (volatile uint32_t *)(0x40023800U+0x08U)
+#define RCC_DCKCFGR      (volatile uint32_t *)(0x40023800U+0x8CU)
 
 
 #define AHB1ENR         ((volatile uint32_t *)(0x40023800U + 0x30U))

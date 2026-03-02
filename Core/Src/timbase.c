@@ -26,7 +26,30 @@ void sys_init(uint32_t tick_hz)
 }
 
 int tim2_init(void){
-	GPIO_Enable(GPIO_PORT_B);
+	extern const uint16_t apb_tbl[8];
+
+	uint32_t tim2_clk=0;
+
+	//RM0090 155p
+	if(*RCC_DCKCFGR&(1U<<24)){
+		if(apb_tbl[(*RCC_CFGR & (7U << 10U)) >> 10U]<=4){
+					tim2_clk=get_hclk();
+				}
+				else{
+					tim2_clk=(get_pclk1())*4;
+				}
+	}
+	else{
+		if(apb_tbl[(*RCC_CFGR & (7U << 10U)) >> 10U]==1){
+			tim2_clk=get_pclk1();
+		}
+		else{
+			tim2_clk=(get_pclk1())*2;
+		}
+	}
+	GPIO_AF(GPIO_PORT_B,11,1); //PB11
+
+	*TIM2_CR1=1U | (1U<<7U); //enable auto-reload buffered
 
 	return 0;
 }

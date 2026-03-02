@@ -11,7 +11,7 @@
 #define HSI_HZ 16000000U
 
 
-static const uint8_t apb_tbl[8] = {
+const uint8_t apb_tbl[8] = {
 	    1,  // 000 -> /1
 	    1,  // 001 -> /1
 	    1,  // 010 -> /1
@@ -21,7 +21,7 @@ static const uint8_t apb_tbl[8] = {
 	    8,  // 110 -> /8
 	    16  // 111 -> /16
 	};
-	static const uint16_t ahb_tbl[16] = {
+const uint16_t ahb_tbl[16] = {
 	    1,   // 0000 -> /1
 	    1,   // 0001 -> /1
 	    1,   // 0010 -> /1
