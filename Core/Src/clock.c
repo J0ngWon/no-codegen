@@ -52,6 +52,22 @@ uint32_t get_pclk1(void){return j_pclk1;}
 
 uint32_t get_pclk2(void){return j_pclk2;}
 
+static int wait_set(volatile uint32_t *reg, uint32_t mask, uint32_t loop_max)
+{
+    for (volatile uint32_t i = 0; i < loop_max; i++) {
+        if ((*reg & mask) != 0U) return 0;
+    }
+    return -1;
+}
+
+static int wait_clear(volatile uint32_t *reg, uint32_t mask, uint32_t loop_max)
+{
+    for (volatile uint32_t i = 0; i < loop_max; i++) {
+        if ((*reg & mask) == 0U) return 0;
+    }
+    return -1;
+}
+
 int clock_update(void) {
 	uint32_t num,pll_m = 0, pll_n = 0, pll_p = 0, source_clk = 0,vco=0,pll_output=0,sys_clk=0;
 	num=(*RCC_CFGR &(3U << 2))>>2; //00:HSI 10:HSE 10:PLL
@@ -87,6 +103,7 @@ int clock_update(void) {
 		}
 		vco=source_clk*pll_n/pll_m;
 		pll_output=vco/pll_p;
+
 		j_hclk=pll_output/ahb_tbl[(*RCC_CFGR&(0xfU<<4U))>>4U];
 
 		j_pclk1=j_hclk/apb_tbl[(*RCC_CFGR&(7U<<10U))>>10U];
@@ -132,28 +149,14 @@ int clock_hse_pll_168(void){
 	*FLASH_ACR |=  5U;    // 5 wait states
 
 	*RCC_CFGR &=~((3U)|(7U<<10U)|(7U<<13U));
-	*RCC_CFGR |=(2U)|(5U<<10U)|(4U<<13U); //set hse ,APB1:/4 APB2:/2
+	*RCC_CFGR |=(2U)|(5U<<10U)|(4U<<13U); //set pll ,APB1:/4 APB2:/2
 
-	if (wait_set(RCC_CFGR, (1U << 2), 3000000U) < 0) return -2;
-	if (wait_clear(RCC_CFGR, (1U << 3), 3000000U) < 0) return -2;
+	if (wait_clear(RCC_CFGR, (1U << 2), 3000000U) < 0) return -2;
+	if (wait_set(RCC_CFGR, (1U << 3), 3000000U) < 0) return -2;
 
 	clock_update();
 	return 0;
 
 }
 
-static int wait_set(volatile uint32_t *reg, uint32_t mask, uint32_t loop_max)
-{
-    for (volatile uint32_t i = 0; i < loop_max; i++) {
-        if ((*reg & mask) != 0U) return 0;
-    }
-    return -1;
-}
 
-static int wait_clear(volatile uint32_t *reg, uint32_t mask, uint32_t loop_max)
-{
-    for (volatile uint32_t i = 0; i < loop_max; i++) {
-        if ((*reg & mask) == 0U) return 0;
-    }
-    return -1;
-}

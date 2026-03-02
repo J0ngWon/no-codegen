@@ -15,26 +15,19 @@ volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
 volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
 volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
 
+char msg[3]={'h','i','\n'};
 
 //__asm volatile("BKPT #0");
 
 int main(void){
 
-	char msg[3]={'h','i','\n'};
 
-	clock_hse_pll_168();
+	if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
+
 	sys_init(1000);
 	USART6_INIT();
 
-	uart_putc('o');
-	uart_putc('k');
-	uart_putc('\n');
-
-	i2c1_init(0);
-
-	lcd_init();
-	lcd_set_cursor(0, 0);
-	lcd_puts(msg);
+	uart_puts(msg);
 
 	while(1){
 

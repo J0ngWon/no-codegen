@@ -49,5 +49,19 @@
 /* ===== I2C ===== */
 #define I2C1_BASE   (volatile uint32_t *)(0x40005400)
 
+/* ===== TIM2 ===== */
+
+#define TIM2_BASE    ((volatile uint32_t *)((uintptr_t)0x40000000 + 0x00U))
+#define TIM2_CR1    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x00U))
+#define TIM2_CR2    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x04U))
+#define TIM2_SR    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x10U))
+#define TIM2_CCMR1    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x18U))
+#define TIM2_CCMR2   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x1CU))
+#define TIM2_CCER   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x20U))
+#define TIM2_CNT   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x24U))
+#define TIM2_PSC   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x28U))
+#define TIM2_ARR   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x2CU))
+#define TIM2_CCR1   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x34U))
+#define TIM2_CCR2   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x38U))
 
 #endif /* INC_F429ZI_REG_H_ */
