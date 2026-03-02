@@ -7,6 +7,7 @@
 #include "f429zi_reg.h"
 
 #include <timebase.h>
+#include <gpio.h>
 
 static volatile uint32_t sys_ms=0;
 
@@ -22,6 +23,12 @@ void sys_init(uint32_t tick_hz)
     *STK_LOAD = reload;
     *STK_VAL  = 0U;
     *STK_CTRL = (1U<<2) | (1U<<1) | (1U<<0);
+}
+
+int tim2_init(void){
+	GPIO_Enable(GPIO_PORT_B);
+
+	return 0;
 }
 
 

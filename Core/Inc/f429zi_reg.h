@@ -29,6 +29,10 @@
 /* ===== GPIO ===== */
 #define GPIO_BASE_VAL   ((volatile uint32_t *)(0x40020000U + 0x00U))
 
+#define GPIOB_MODER ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x00U))
+#define GPIOB_OTYPER  ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x04U))
+#define GPIOB_OSPEEDR ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x08U))
+#define GPIOB_PUPDR  ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x0CU))
 #define GPIOB_MODER_LED     ((volatile uint32_t *)(0x40020400U + 0x00U))
 #define GPIOB_BSRR_LED      ((volatile uint32_t *)(0x40020400U + 0x18U))
 
@@ -48,7 +52,14 @@
 
 /* ===== I2C ===== */
 #define I2C1_BASE   (volatile uint32_t *)(0x40005400)
-
+#define I2C1_CR1   ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U))
+#define I2C1_CR2     ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U))
+#define I2C1_OAR1    ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x08U))
+#define I2C1_DR      ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U))
+#define I2C1_SR1     ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U))
+#define I2C1_SR2     ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U))
+#define I2C1_CCR     ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU))
+#define I2C1_TRISE  ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U))
 /* ===== TIM2 ===== */
 
 #define TIM2_BASE    ((volatile uint32_t *)((uintptr_t)0x40000000 + 0x00U))
@@ -65,3 +76,5 @@
 #define TIM2_CCR2   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x38U))
 
 #endif /* INC_F429ZI_REG_H_ */
+
+

@@ -5,17 +5,9 @@
 #define MEGA_ADDR_8BIT (0x12U << 1U)
 #define timeout_ms 5000
 
-volatile uint32_t* I2C1_CR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x00U);
-volatile uint32_t* I2C1_CR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x04U);
-volatile uint32_t* I2C1_CCR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU);
-volatile uint32_t* I2C1_TRISE=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U);
-volatile uint32_t* I2C1_OAR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x08U);
 
-volatile uint32_t* I2C1_SR1=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x14U);
-volatile uint32_t* I2C1_SR2=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U);
-volatile uint32_t* I2C1_DR=(volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x10U);
 
-char msg[3]={'h','i','\n'};
+char msg[3]={'O','K','\n'};
 
 //__asm volatile("BKPT #0");
 
@@ -26,8 +18,12 @@ int main(void){
 
 	sys_init(1000);
 	USART6_INIT();
+	uart_puts(&msg);
 
-	uart_puts(msg);
+	i2c1_init(0);
+	lcd_init();
+	lcd_set_cursor(0, 0);
+	lcd_puts(msg);
 
 	while(1){
 
@@ -41,11 +37,6 @@ int main(void){
 	}
 }
 
-int GPIO_Enable(gpio_port_t port){
-	if (port > GPIO_PORT_K) return 1;
-	*AHB1ENR |=(1U<<port);
-	return 0;
-}
 
 void led_on(void){
 	//PB7 PC13 PB14  LD1,2,3
@@ -79,26 +70,7 @@ void old_delay(uint32_t ms){
 }
 
 
-int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level){
-	volatile uint32_t*base,*GPIOx_MODER,*GPIOx_BSRR;
-	uint32_t const GPIO_MOD_Mask = (0x1U << (2U * pin));
-	uint32_t const GPIO_MOD_ClearMask = ~(0x3U << (2U * pin));
 
-	if(pin>15) return 1 ;
-
-	base =(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (port * 0x400));
-	GPIOx_MODER=(volatile uint32_t*)((uintptr_t)base + 0x00U);
-	GPIOx_BSRR =(volatile uint32_t*)((uintptr_t)base + 0x18U);
-
-	GPIO_Enable(port);
-	*GPIOx_MODER= (*GPIOx_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
-
-	if (level == 1)
-		*GPIOx_BSRR = (1U << pin);
-	else
-		*GPIOx_BSRR = (1U << (pin+16U));
-	return 0;
-}
 
 
 
@@ -113,52 +85,42 @@ timings
 • Set the START bit in the I2C_CR1 register to generate a Start condition*/
 
 //MOD 0: Master , 1:Slave
-void i2c1_init(int mod){
-	volatile uint32_t* GPIOB_MODER=
-				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x00U);
-		uint32_t const GPIO_MOD_Mask = (0x82U << (2U * 6U));
-		uint32_t const GPIO_MOD_ClearMask = ~(0xc3U << (2U * 6U));
+void i2c1_init(int mod) {
 
-		//PB6
-		volatile uint32_t* GPIOB_AFRL=
-				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x20U);
-		uint32_t const GPIO_AFRL_Mask = (0x4U << 24U);
-		uint32_t const GPIO_AFRL_ClearMask = ~(0xfU << 24U);
+	/*uint32_t const GPIO_MOD_Mask = (0x82U << (2U * 6U));
+	uint32_t const GPIO_MOD_ClearMask = ~(0xc3U << (2U * 6U));
 
-		//PB9
-		volatile uint32_t* GPIOB_AFRH=
-				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x24U);
-				uint32_t const GPIO_AFRH_Mask = (0x4U << 4U);
-				uint32_t const GPIO_AFRH_ClearMask = ~(0xfU << 4U);
+	//PB6
 
+	uint32_t const GPIO_AFRL_Mask = (0x4U << 24U);
+	uint32_t const GPIO_AFRL_ClearMask = ~(0xfU << 24U);
 
-	   volatile uint32_t* GPIOB_OTYPER=
-				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x04U);
-	   volatile uint32_t* GPIOB_PUPDR=
-	  				(volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x0CU);
+	//PB9
+	uint32_t const GPIO_AFRH_Mask = (0x4U << 4U);
+	uint32_t const GPIO_AFRH_ClearMask = ~(0xfU << 4U);
 
-	   volatile uint32_t* GPIOB_OSPEEDR =
-	       (volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400) + 0x08U);
+	*GPIOB_MODER= (*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+	*GPIOB_AFRL= (*GPIOB_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
+	*GPIOB_AFRH= (*GPIOB_AFRH & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
 
-	   // PB6(12~13), PB9(18~19)
-	   uint32_t const OSPEED_MASK =
-	       (0x3U << (12U)) | (0x3U << (18U));
-	   uint32_t const OSPEED_VERYHIGH =
-	       (0x3U << (12U)) | (0x3U << (18U));
+	*/
 
-	   uint32_t const PUPD_MASK =
-	       (0x3U << 12U) | (0x3U << 18U);
-	   uint32_t const PUPD_VAL  =
-	       (0x1U << 12U) | (0x1U << 18U);  //Pull Up!
+	// PB6(12~13), PB9(18~19)
+	uint32_t const OSPEED_MASK = (0x3U << (12U)) | (0x3U << (18U));
+	uint32_t const OSPEED_VERYHIGH = (0x3U << (12U)) | (0x3U << (18U));
+
+	uint32_t const PUPD_MASK = (0x3U << 12U) | (0x3U << 18U);
+	uint32_t const PUPD_VAL = (0x1U << 12U) | (0x1U << 18U);  //Pull Up!
 
 	GPIO_Enable(GPIO_PORT_B);
 	*APB1ENR|=(0x1U<<21U); //I2C1 Enable
 
-	*GPIOB_MODER= (*GPIOB_MODER & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+	GPIO_AF(GPIO_PORT_B,6,4);
+	GPIO_AF(GPIO_PORT_B,9,4);
+
 	*GPIOB_OTYPER|=(0x1U << 6U) | (0x1U << 9U);
 	*GPIOB_PUPDR = (*GPIOB_PUPDR & ~PUPD_MASK) | PUPD_VAL;
-	*GPIOB_AFRL= (*GPIOB_AFRL & GPIO_AFRL_ClearMask) | GPIO_AFRL_Mask;
-	*GPIOB_AFRH= (*GPIOB_AFRH & GPIO_AFRH_ClearMask) | GPIO_AFRH_Mask;
+
 
 
 	*GPIOB_OSPEEDR = (*GPIOB_OSPEEDR & ~OSPEED_MASK) | OSPEED_VERYHIGH;

@@ -27,5 +27,6 @@ typedef enum
 
 int GPIO_Enable(gpio_port_t port);
 int GPIO_Write(gpio_port_t port ,uint32_t pin, uint32_t level);
+int GPIO_AF(gpio_port_t port ,uint32_t pin_num,uint32_t af_num);
 
 #endif /* INC_GPIO_H_ */
