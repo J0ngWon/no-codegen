@@ -11,6 +11,7 @@
 #include "f429zi_reg.h"
 
 #define HSE_TIMEOUT_MS 1000U
+extern const uint8_t apb_tbl[8];
 
 int hse_enable(void);
 int clock_hse_pll_168(void);

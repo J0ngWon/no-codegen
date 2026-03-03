@@ -61,12 +61,12 @@
 #define I2C1_SR2     ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x18U))
 #define I2C1_CCR     ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x1CU))
 #define I2C1_TRISE  ((volatile uint32_t*)((uintptr_t)I2C1_BASE + 0x20U))
-/* ===== TIM2 ===== */
-
+/* ===== TIM ===== */
 #define TIM2_BASE    ((volatile uint32_t *)((uintptr_t)0x40000000 + 0x00U))
 #define TIM2_CR1    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x00U))
 #define TIM2_CR2    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x04U))
 #define TIM2_SR    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x10U))
+#define TIM2_EGR    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x14U))
 #define TIM2_CCMR1    ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x18U))
 #define TIM2_CCMR2   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x1CU))
 #define TIM2_CCER   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x20U))
@@ -75,6 +75,27 @@
 #define TIM2_ARR   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x2CU))
 #define TIM2_CCR1   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x34U))
 #define TIM2_CCR2   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x38U))
+#define TIM2_CCR3   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x3CU))
+#define TIM2_CCR4   ((volatile uint32_t *)((uintptr_t)TIM2_BASE  + 0x40U))
+
+#define TIM5_BASE    ((volatile uint32_t *)((uintptr_t)0x40000C00 + 0x00U))
+#define TIM5_CR1    ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x00U))
+#define TIM5_CR2    ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x04U))
+#define TIM5_SMCR   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x08U))
+#define TIM5_SR    ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x10U))
+#define TIM5_EGR    ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x14U))
+#define TIM5_CCMR1    ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x18U))
+#define TIM5_CCMR2   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x1CU))
+#define TIM5_CCER   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x20U))
+#define TIM5_CNT   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x24U))
+#define TIM5_PSC   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x28U))
+#define TIM5_ARR   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x2CU))
+#define TIM5_CCR1   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x34U))
+#define TIM5_CCR2   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x38U))
+#define TIM5_CCR3   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x3CU))
+#define TIM5_CCR4   ((volatile uint32_t *)((uintptr_t)TIM5_BASE  + 0x40U))
+
+
 
 #endif /* INC_F429ZI_REG_H_ */
 

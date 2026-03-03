@@ -12,7 +12,7 @@ char msg[3]={'O','K','\n'};
 //__asm volatile("BKPT #0");
 
 int main(void){
-
+	uint32_t ff,dd;
 
 	if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
 
@@ -20,6 +20,12 @@ int main(void){
 	USART6_INIT();
 	uart_puts(&msg);
 
+    tim2_pwm_output();
+    tim5_pwm_capture();
+
+    tim5_freq_duty(&ff,&dd,1);
+
+    __asm volatile("BKPT #0");
 	i2c1_init(0);
 	lcd_init();
 	lcd_set_cursor(0, 0);
