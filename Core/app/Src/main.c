@@ -24,12 +24,13 @@ int main(void){
     tim5_pwm_capture();
 
     tim5_freq_duty(&ff,&dd,1);
-
+    delay(100);
+    led_on();
     __asm volatile("BKPT #0");
-	i2c1_init(0);
-	lcd_init();
+	//i2c1_init(0);
+	/*lcd_init();
 	lcd_set_cursor(0, 0);
-	lcd_puts(msg);
+	lcd_puts(&msg);*/
 
 	while(1){
 
