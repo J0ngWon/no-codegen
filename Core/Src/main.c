@@ -25,7 +25,7 @@ int main(void){
 
     tim5_freq_duty(&ff,&dd,1);
 
-    __asm volatile("BKPT #0");
+
 	i2c1_init(0);
 	lcd_init();
 	lcd_set_cursor(0, 0);

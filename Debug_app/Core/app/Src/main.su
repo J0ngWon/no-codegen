@@ -1,0 +1,10 @@
+../Core/app/Src/main.c:14:5:main	16	static,ignoring_inline_asm
+../Core/app/Src/main.c:48:6:led_on	16	static
+../Core/app/Src/main.c:60:6:led_off	4	static
+../Core/app/Src/main.c:66:6:old_delay	24	static
+../Core/app/Src/main.c:95:6:i2c1_init	32	static
+../Core/app/Src/main.c:155:5:i2c1_master_tx	32	static
+../Core/app/Src/main.c:206:5:i2c1_master_rx	32	static
+../Core/app/Src/main.c:286:5:i2c1_slave_tx	24	static
+../Core/app/Src/main.c:352:5:i2c_SR1_ERR	4	static
+../Core/app/Src/main.c:370:6:Error_Handler	8	static

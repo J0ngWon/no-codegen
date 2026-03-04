@@ -1,0 +1,6 @@
+../Core/common/Src/uart6.c:12:6:USART6_INIT	32	static
+../Core/common/Src/uart6.c:40:5:uart_putc	16	static
+../Core/common/Src/uart6.c:50:5:uart_puts	16	static
+../Core/common/Src/uart6.c:69:5:uart_getc	16	static
+../Core/common/Src/uart6.c:84:5:uart_fgets	24	static
+../Core/common/Src/uart6.c:101:5:uart_set_baud	56	static
