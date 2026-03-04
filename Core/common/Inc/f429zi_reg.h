@@ -10,6 +10,19 @@
 
 #include <stdint.h>
 
+/* ===== NVIC ===== */
+#define NVIC_BASE        ((volatile uint32_t *)(0xE000E000))
+
+/* ===== SCB ===== */
+#define SCB_BASE        ((volatile uint32_t *)(0xE000ED00))
+#define SCB_VTOR        ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x08U))
+#define SCB_CFSR        ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x28U))
+
+/* ===== SysTick ===== */
+#define STK_CTRL        ((volatile uint32_t *)(0xE000E010U + 0x00U))
+#define STK_LOAD        ((volatile uint32_t *)(0xE000E010U + 0x04U))
+#define STK_VAL         ((volatile uint32_t *)(0xE000E010U + 0x08U))
+
 /* ===== FLASH ===== */
 #define FLASH_ACR ((volatile uint32_t *)(0x40023C00U + 0x00U))
 
@@ -36,11 +49,6 @@
 #define GPIOB_PUPDR  ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x0CU))
 #define GPIOB_MODER_LED     ((volatile uint32_t *)(0x40020400U + 0x00U))
 #define GPIOB_BSRR_LED      ((volatile uint32_t *)(0x40020400U + 0x18U))
-
-/* ===== SysTick ===== */
-#define STK_CTRL        ((volatile uint32_t *)(0xE000E010U + 0x00U))
-#define STK_LOAD        ((volatile uint32_t *)(0xE000E010U + 0x04U))
-#define STK_VAL         ((volatile uint32_t *)(0xE000E010U + 0x08U))
 
 /* ===== USART6 ===== */
 #define USART6_BASE     ((volatile uint32_t *)(0x40011400U + 0x00U))

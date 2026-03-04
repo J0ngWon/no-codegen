@@ -1,5 +1,5 @@
 #include <stdint.h>
-
+#include "stm32f4xx.h"
 #include "diy.h"
 
 #define MEGA_ADDR_8BIT (0x12U << 1U)
@@ -14,6 +14,11 @@ char msg[3]={'O','K','\n'};
 int main(void){
 	uint32_t ff,dd;
 
+	//SCB->VTOR = 0x08010000U;
+
+	__DSB();
+	__ISB();
+
 	if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
 
 	sys_init(1000);
@@ -26,11 +31,11 @@ int main(void){
     tim5_freq_duty(&ff,&dd,1);
     delay(100);
     led_on();
-    __asm volatile("BKPT #0");
-	//i2c1_init(0);
-	/*lcd_init();
+
+	i2c1_init(0);
+	lcd_init();
 	lcd_set_cursor(0, 0);
-	lcd_puts(&msg);*/
+	lcd_puts(&msg);
 
 	while(1){
 
