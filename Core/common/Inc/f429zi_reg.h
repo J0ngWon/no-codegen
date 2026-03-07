@@ -14,9 +14,15 @@
 #define NVIC_BASE        ((volatile uint32_t *)(0xE000E000))
 
 /* ===== SCB ===== */
-#define SCB_BASE        ((volatile uint32_t *)(0xE000ED00))
-#define SCB_VTOR        ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x08U))
-#define SCB_CFSR        ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x28U))
+#define SCB_BASE      ((volatile uint32_t *)(0xE000ED00))
+#define SCB_VTOR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x08U))
+#define SCB_SHCSR     ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x24UL))
+#define SCB_CFSR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x28U))
+#define SCB_HFSR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x2CUL))
+#define SCB_MMFAR     ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x34UL))
+#define SCB_BFAR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x38UL))
+#define SCB_AFSR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x3CUL))
+
 
 /* ===== SysTick ===== */
 #define STK_CTRL        ((volatile uint32_t *)(0xE000E010U + 0x00U))

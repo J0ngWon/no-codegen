@@ -7,6 +7,7 @@
 
 #ifndef INC_DIY_H_
 #define INC_DIY_H_
+#include "stm32f4xx.h"
 
 #include "f429zi_reg.h"
 #include "gpio.h"
@@ -15,7 +16,7 @@
 #include "clock.h"
 #include "ledlcd.h"
 #include "timebase.h"
-
+#include <crashlog.h>
 
 
 #endif /* INC_DIY_H_ */

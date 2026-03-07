@@ -6,7 +6,9 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/common/Src/clock.c \
+../Core/common/Src/crashlog.c \
 ../Core/common/Src/gpio.c \
+../Core/common/Src/i2c1.c \
 ../Core/common/Src/lcd2.c \
 ../Core/common/Src/stm32f4xx_it.c \
 ../Core/common/Src/syscalls.c \
@@ -17,7 +19,9 @@ C_SRCS += \
 
 OBJS += \
 ./Core/common/Src/clock.o \
+./Core/common/Src/crashlog.o \
 ./Core/common/Src/gpio.o \
+./Core/common/Src/i2c1.o \
 ./Core/common/Src/lcd2.o \
 ./Core/common/Src/stm32f4xx_it.o \
 ./Core/common/Src/syscalls.o \
@@ -28,7 +32,9 @@ OBJS += \
 
 C_DEPS += \
 ./Core/common/Src/clock.d \
+./Core/common/Src/crashlog.d \
 ./Core/common/Src/gpio.d \
+./Core/common/Src/i2c1.d \
 ./Core/common/Src/lcd2.d \
 ./Core/common/Src/stm32f4xx_it.d \
 ./Core/common/Src/syscalls.d \
@@ -45,7 +51,7 @@ Core/common/Src/%.o Core/common/Src/%.su Core/common/Src/%.cyclo: ../Core/common
 clean: clean-Core-2f-common-2f-Src
 
 clean-Core-2f-common-2f-Src:
-	-$(RM) ./Core/common/Src/clock.cyclo ./Core/common/Src/clock.d ./Core/common/Src/clock.o ./Core/common/Src/clock.su ./Core/common/Src/gpio.cyclo ./Core/common/Src/gpio.d ./Core/common/Src/gpio.o ./Core/common/Src/gpio.su ./Core/common/Src/lcd2.cyclo ./Core/common/Src/lcd2.d ./Core/common/Src/lcd2.o ./Core/common/Src/lcd2.su ./Core/common/Src/stm32f4xx_it.cyclo ./Core/common/Src/stm32f4xx_it.d ./Core/common/Src/stm32f4xx_it.o ./Core/common/Src/stm32f4xx_it.su ./Core/common/Src/syscalls.cyclo ./Core/common/Src/syscalls.d ./Core/common/Src/syscalls.o ./Core/common/Src/syscalls.su ./Core/common/Src/sysmem.cyclo ./Core/common/Src/sysmem.d ./Core/common/Src/sysmem.o ./Core/common/Src/sysmem.su ./Core/common/Src/system_stm32f4xx.cyclo ./Core/common/Src/system_stm32f4xx.d ./Core/common/Src/system_stm32f4xx.o ./Core/common/Src/system_stm32f4xx.su ./Core/common/Src/timbase.cyclo ./Core/common/Src/timbase.d ./Core/common/Src/timbase.o ./Core/common/Src/timbase.su ./Core/common/Src/uart6.cyclo ./Core/common/Src/uart6.d ./Core/common/Src/uart6.o ./Core/common/Src/uart6.su
+	-$(RM) ./Core/common/Src/clock.cyclo ./Core/common/Src/clock.d ./Core/common/Src/clock.o ./Core/common/Src/clock.su ./Core/common/Src/crashlog.cyclo ./Core/common/Src/crashlog.d ./Core/common/Src/crashlog.o ./Core/common/Src/crashlog.su ./Core/common/Src/gpio.cyclo ./Core/common/Src/gpio.d ./Core/common/Src/gpio.o ./Core/common/Src/gpio.su ./Core/common/Src/i2c1.cyclo ./Core/common/Src/i2c1.d ./Core/common/Src/i2c1.o ./Core/common/Src/i2c1.su ./Core/common/Src/lcd2.cyclo ./Core/common/Src/lcd2.d ./Core/common/Src/lcd2.o ./Core/common/Src/lcd2.su ./Core/common/Src/stm32f4xx_it.cyclo ./Core/common/Src/stm32f4xx_it.d ./Core/common/Src/stm32f4xx_it.o ./Core/common/Src/stm32f4xx_it.su ./Core/common/Src/syscalls.cyclo ./Core/common/Src/syscalls.d ./Core/common/Src/syscalls.o ./Core/common/Src/syscalls.su ./Core/common/Src/sysmem.cyclo ./Core/common/Src/sysmem.d ./Core/common/Src/sysmem.o ./Core/common/Src/sysmem.su ./Core/common/Src/system_stm32f4xx.cyclo ./Core/common/Src/system_stm32f4xx.d ./Core/common/Src/system_stm32f4xx.o ./Core/common/Src/system_stm32f4xx.su ./Core/common/Src/timbase.cyclo ./Core/common/Src/timbase.d ./Core/common/Src/timbase.o ./Core/common/Src/timbase.su ./Core/common/Src/uart6.cyclo ./Core/common/Src/uart6.d ./Core/common/Src/uart6.o ./Core/common/Src/uart6.su
 
 .PHONY: clean-Core-2f-common-2f-Src
 

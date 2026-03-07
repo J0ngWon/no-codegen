@@ -19,4 +19,6 @@ int uart_fgets(char *msg ,uint32_t max_len);
 int uart_set_baud(volatile uint32_t *brr_reg,
                   volatile uint32_t *cr1_reg,
                   uint32_t baud);
+void uart_put_hex32(uint32_t v);
+void uart_put_str(const char *s);
 #endif /* INC_UART6_H_ */

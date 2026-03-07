@@ -42,18 +42,23 @@ _estack = ORIGIN(RAM) + LENGTH(RAM); /* end of "RAM" Ram type memory */
 _Min_Heap_Size = 0x200; /* required amount of heap */
 _Min_Stack_Size = 0x400; /* required amount of stack */
 
+
+
 /* Memories definition */
+CRASH_SIZE = 0x100;
+
 MEMORY
 {
-  CCMRAM    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 64K
-  RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 192K
-  FLASH    (rx)    : ORIGIN = 0x8010000,   LENGTH = 1984K
+  CCMRAM (xrw) : ORIGIN = 0x10000000, LENGTH = 64K
+  RAM    (xrw) : ORIGIN = 0x20000000, LENGTH = 0x30000 - CRASH_SIZE
+  CRASH  (xrw) : ORIGIN = 0x20000000 + 0x30000 - CRASH_SIZE, LENGTH = CRASH_SIZE
+  FLASH  (rx)  : ORIGIN = 0x08010000, LENGTH = 1984K
 }
 
 /* Sections */
 SECTIONS
 {
-
+  
   /* The startup code into "FLASH" Rom type memory */
   .isr_vector :
   {
@@ -196,6 +201,14 @@ SECTIONS
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
   } >RAM
+  
+  /* crash log sectiorn */
+	.noinit.crash (NOLOAD) :
+  {
+    . = ALIGN(4);
+    KEEP(*(.noinit.crash))
+    . = ALIGN(4);
+  } > CRASH
 
   /* Remove information from the compiler libraries */
   /DISCARD/ :
@@ -204,6 +217,11 @@ SECTIONS
     libm.a ( * )
     libgcc.a ( * )
   }
-
+  .noinit.crash (NOLOAD) :
+{
+  . = ALIGN(4);
+  KEEP(*(.noinit.crash))
+  . = ALIGN(4);
+} > CRASH
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }

@@ -125,3 +125,17 @@ int uart_set_baud(volatile uint32_t *brr_reg,
 	return 0;
 }
 
+void uart_put_hex32(uint32_t value)
+{
+    for (int i = 28; i >= 0; i -= 4) {
+        uint32_t n = (value >> i) & 0xFU;
+        uint8_t output = (n < 10) ? (uint8_t)('0' + n) : (uint8_t)('A' + (n - 10));
+        uart_putc(output);
+    }
+}
+
+void uart_put_str(const char *s)
+{
+    uart_puts((const uint8_t*)s);
+}
+

@@ -1,3 +1,6 @@
-../Core/boot/Src/main.c:17:12:app_is_valid	24	static
-../Core/boot/Src/main.c:34:13:jump_to_app	40	static,ignoring_inline_asm
-../Core/boot/Src/main.c:76:5:main	8	static
+../Core/common/Inc/crashlog.h:30:19:crashlog_is_valid	4	static
+../Core/common/Inc/crashlog.h:34:20:crashlog_clear	4	static
+../Core/boot/Src/main.c:21:12:app_is_valid	24	static
+../Core/boot/Src/main.c:38:13:jump_to_app	40	static,ignoring_inline_asm
+../Core/boot/Src/main.c:80:5:main	8	static
+../Core/boot/Src/main.c:93:13:crashlog_flush_to_eeprom	8	static

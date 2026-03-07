@@ -7,10 +7,15 @@
 
 #include <stdint.h>
 #include "stm32f4xx.h"   // NVIC, __set_MSP, __disable_irq
-#include "f429zi_reg.h"
+#include "diy.h"
+#include "eeplog.h"
 
 #define APP_BASE   (0x08010000U) // FLASH.app.ld
 #define FLASH_END  (0x08200000U) // RM0090 77p
+
+static void crashlog_flush_eeprom(void);
+static int boot_crashlog_service(void);
+static void boot_dump_crashlog(const crashlog_t* log);
 
 //__asm volatile("BKPT #0");
 
@@ -65,22 +70,82 @@ static void jump_to_app(void)
     __DSB();
     __ISB();
 
-    __enable_irq();
-
     //jump Reset_Handler
+    __enable_irq();
     app_entry();
 
     while (1) { }
 }
 
-int main(void)
+int main(void) {
+
+
+	if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
+	sys_init(1000);
+	USART6_INIT();
+	i2c1_init(0);
+
+	uart_put_str("BOOT start\r\n");
+
+	int had_crash = boot_crashlog_service();
+
+	if (had_crash) {
+		uart_puts((const uint8_t*) "\r\nBOOT: crash handled. (pause)\r\n");
+		while (1) {}
+	}
+
+
+	if (app_is_valid()) {
+		jump_to_app();
+	}
+
+
+	while (1) {
+	}
+}
+
+static int boot_crashlog_service(void)
 {
-
-
-    if (app_is_valid()) {
-
-    	jump_to_app();
+    if (!crashlog_valid()) {
+        return 0;
     }
 
-    while (1) {}
+    uart_puts((const uint8_t*)"\r\nBOOT: crashlog detected in SRAM\r\n");
+    boot_dump_crashlog((const crashlog_t*)&g_crashlog);
+
+
+    int r = at24c256_write(0x0000, (const uint8_t*)&g_crashlog, sizeof(g_crashlog));
+    if (r != 0) {
+        uart_puts((const uint8_t*)"BOOT: EEPROM write FAIL\r\n");
+        return 1;
+    }
+
+    crashlog_t rb;
+    r = at24c256_read(0x0000, (uint8_t*)&rb, sizeof(rb));
+    if (r != 0) {
+        uart_puts((const uint8_t*)"BOOT: EEPROM read FAIL\r\n");
+        return 1;
+    }
+
+    if (memcmp(&rb, (const void*)&g_crashlog, sizeof(rb)) != 0) {
+        uart_puts((const uint8_t*)"BOOT: EEPROM verify FAIL\r\n");
+        return 1;
+    }
+
+    uart_puts((const uint8_t*)"BOOT: EEPROM verify OK\r\n");
+
+
+    crashlog_clear();
+
+    return 1;
 }
+
+static void boot_dump_crashlog(const crashlog_t* log)
+{
+
+    uart_puts((const uint8_t*)"  VTOR/HFSR/CFSR dump...\r\n");
+
+}
+
+
+

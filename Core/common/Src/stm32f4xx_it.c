@@ -23,7 +23,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdint.h>
-#include <timebase.h>
+#include <diy.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -87,6 +88,32 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+
+    __disable_irq();
+
+    g_crashlog.magic   = CRASHLOG_MAGIC;
+    g_crashlog.ver     = CRASHLOG_VER;
+    g_crashlog.seq     = g_crashlog.seq + 1;
+
+    g_crashlog.vtor    = *SCB_VTOR;
+    g_crashlog.hfsr    = *SCB_HFSR;
+    g_crashlog.cfsr    = *SCB_CFSR;
+    g_crashlog.shcsr   = *SCB_SHCSR;
+
+
+    g_crashlog.mmfar   = *SCB_MMFAR;
+    g_crashlog.bfar    = *SCB_BFAR;
+    g_crashlog.afsr    = *SCB_AFSR;
+
+    g_crashlog.msp     = __get_MSP();
+    g_crashlog.psp     = __get_PSP();
+    g_crashlog.control = __get_CONTROL();
+
+    __DSB();
+
+    NVIC_SystemReset();
+
+    while (1) { }
 
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
