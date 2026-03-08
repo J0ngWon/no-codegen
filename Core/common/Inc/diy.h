@@ -16,7 +16,7 @@
 #include "clock.h"
 #include "ledlcd.h"
 #include "timebase.h"
-#include <crashlog.h>
-
+#include "crashlog.h"
+#include "eeprom.h"
 
 #endif /* INC_DIY_H_ */

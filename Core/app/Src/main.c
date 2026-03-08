@@ -10,23 +10,26 @@ static void fault_test_invstate(void)
     fn(); // INVSTATE
 }
 
-char msg[3]={'A','p','p'};
+char msg[4]={'A','p','p','\n'};
 
 //__asm volatile("BKPT #0");
 
 int main(void){
-
+	__enable_irq();
 
 	uint32_t ff,dd;
 
-	if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
+	/*if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
 	sys_init(1000);
 	USART6_INIT();
-	i2c1_init(0);
+	i2c1_init(0);*/
 
 	uart_puts(msg);
 
-	//fault_test_invstate();
+	eestate_confirm_ok();
+
+	fault_test_invstate();
+
 
     tim2_pwm_output();
     tim5_pwm_capture();

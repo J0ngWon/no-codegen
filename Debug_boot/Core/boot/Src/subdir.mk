@@ -5,16 +5,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Core/boot/Src/boot.c \
-../Core/boot/Src/eeplog.c 
+../Core/boot/Src/boot.c 
 
 OBJS += \
-./Core/boot/Src/boot.o \
-./Core/boot/Src/eeplog.o 
+./Core/boot/Src/boot.o 
 
 C_DEPS += \
-./Core/boot/Src/boot.d \
-./Core/boot/Src/eeplog.d 
+./Core/boot/Src/boot.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +21,7 @@ Core/boot/Src/%.o Core/boot/Src/%.su Core/boot/Src/%.cyclo: ../Core/boot/Src/%.c
 clean: clean-Core-2f-boot-2f-Src
 
 clean-Core-2f-boot-2f-Src:
-	-$(RM) ./Core/boot/Src/boot.cyclo ./Core/boot/Src/boot.d ./Core/boot/Src/boot.o ./Core/boot/Src/boot.su ./Core/boot/Src/eeplog.cyclo ./Core/boot/Src/eeplog.d ./Core/boot/Src/eeplog.o ./Core/boot/Src/eeplog.su
+	-$(RM) ./Core/boot/Src/boot.cyclo ./Core/boot/Src/boot.d ./Core/boot/Src/boot.o ./Core/boot/Src/boot.su
 
 .PHONY: clean-Core-2f-boot-2f-Src
 

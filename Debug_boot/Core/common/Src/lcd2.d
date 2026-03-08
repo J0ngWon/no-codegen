@@ -12,7 +12,7 @@ Core/common/Src/lcd2.o: ../Core/common/Src/lcd2.c \
  ../Core/common/Inc/uart6.h ../Core/common/Inc/i2c1.h \
  ../Core/common/Inc/clock.h ../Core/common/Inc/ledlcd.h \
  ../Core/common/Inc/timebase.h ../Core/common/Inc/crashlog.h \
- ../Core/common/Inc/stm32f4xx_it.h
+ ../Core/common/Inc/eeprom.h ../Core/common/Inc/stm32f4xx_it.h
 ../Core/common/Inc/diy.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h:
@@ -30,4 +30,5 @@ Core/common/Src/lcd2.o: ../Core/common/Src/lcd2.c \
 ../Core/common/Inc/ledlcd.h:
 ../Core/common/Inc/timebase.h:
 ../Core/common/Inc/crashlog.h:
+../Core/common/Inc/eeprom.h:
 ../Core/common/Inc/stm32f4xx_it.h:

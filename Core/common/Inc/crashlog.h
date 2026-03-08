@@ -38,5 +38,6 @@ static inline int crashlog_valid(void) {
 static inline void crashlog_clear(void) {
     g_crashlog.magic = 0;
     g_crashlog.ver   = 0;
-
 }
+
+

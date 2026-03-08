@@ -11,7 +11,7 @@ C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.external
 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-stdio.o)
                               C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-findfp.o) (__sread)
 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
-                              ./Core/boot/Src/boot.o (memcmp)
+                              ./Core/common/Src/eeplog.o (memcmp)
 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
                               C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o (memset)
 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
@@ -94,89 +94,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./Core/boot/Src/boot.o
  .data          0x00000000        0x0 ./Core/boot/Src/boot.o
  .bss           0x00000000        0x0 ./Core/boot/Src/boot.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .group         0x00000000        0xc ./Core/boot/Src/eeplog.o
- .text          0x00000000        0x0 ./Core/boot/Src/eeplog.o
- .data          0x00000000        0x0 ./Core/boot/Src/eeplog.o
- .bss           0x00000000        0x0 ./Core/boot/Src/eeplog.o
- .text.crashlog_valid
-                0x00000000       0x30 ./Core/boot/Src/eeplog.o
- .text.crashlog_clear
-                0x00000000       0x20 ./Core/boot/Src/eeplog.o
- .text.eelog_load_hdr
-                0x00000000       0xc4 ./Core/boot/Src/eeplog.o
- .text.eelog_rec_addr
-                0x00000000       0x2a ./Core/boot/Src/eeplog.o
- .text.eelog_append_and_verify
-                0x00000000       0xc0 ./Core/boot/Src/eeplog.o
- .rodata        0x00000000       0xf5 ./Core/boot/Src/eeplog.o
- .text.boot_crashlog_flush_to_eeprom
-                0x00000000       0x80 ./Core/boot/Src/eeplog.o
- .text.boot_dump_last_crash
-                0x00000000      0x128 ./Core/boot/Src/eeplog.o
- .debug_info    0x00000000      0x4ad ./Core/boot/Src/eeplog.o
- .debug_abbrev  0x00000000      0x1e0 ./Core/boot/Src/eeplog.o
- .debug_aranges
-                0x00000000       0x50 ./Core/boot/Src/eeplog.o
- .debug_rnglists
-                0x00000000       0x3b ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0x158 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0xad8 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x22 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x5b ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x2a ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x94 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x43 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x34 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0x190 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x57 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0x370 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x16 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x4a ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x34 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x10 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x58 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x8e ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x1c ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0x185 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x10 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x3c ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x20 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0x103 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x6a ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000      0x1df ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x10 ./Core/boot/Src/eeplog.o
- .debug_macro   0x00000000       0x10 ./Core/boot/Src/eeplog.o
- .debug_line    0x00000000      0x7f2 ./Core/boot/Src/eeplog.o
- .debug_str     0x00000000     0x7526 ./Core/boot/Src/eeplog.o
- .comment       0x00000000       0x44 ./Core/boot/Src/eeplog.o
- .debug_frame   0x00000000      0x10c ./Core/boot/Src/eeplog.o
- .ARM.attributes
-                0x00000000       0x34 ./Core/boot/Src/eeplog.o
  .text          0x00000000       0x14 ./Core/boot/Startup/startup_stm32f429zitx.o
  .data          0x00000000        0x0 ./Core/boot/Startup/startup_stm32f429zitx.o
  .bss           0x00000000        0x0 ./Core/boot/Startup/startup_stm32f429zitx.o
@@ -217,6 +134,101 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a ./Core/common/Src/crashlog.o
  .debug_macro   0x00000000      0x1df ./Core/common/Src/crashlog.o
  .debug_macro   0x00000000       0x10 ./Core/common/Src/crashlog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eeplog.o
+ .text          0x00000000        0x0 ./Core/common/Src/eeplog.o
+ .data          0x00000000        0x0 ./Core/common/Src/eeplog.o
+ .bss           0x00000000        0x0 ./Core/common/Src/eeplog.o
+ .text.boot_dump_last_crash
+                0x00000000      0x128 ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000      0xad8 ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000       0x22 ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000      0x103 ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000       0x6a ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000      0x1df ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000       0x10 ./Core/common/Src/eeplog.o
+ .debug_macro   0x00000000       0x46 ./Core/common/Src/eeplog.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .group         0x00000000        0xc ./Core/common/Src/eepstate.o
+ .text          0x00000000        0x0 ./Core/common/Src/eepstate.o
+ .data          0x00000000        0x0 ./Core/common/Src/eepstate.o
+ .bss           0x00000000        0x0 ./Core/common/Src/eepstate.o
+ .text.eestate_confirm_ok
+                0x00000000       0x34 ./Core/common/Src/eepstate.o
+ .text.eestate_clear_recovery
+                0x00000000       0x2c ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000      0xad8 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x22 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x5b ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x2a ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x94 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x43 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x34 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000      0x190 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x57 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000      0x370 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x16 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x4a ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x34 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x10 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x58 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x8e ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x1c ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000      0x185 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x10 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x3c ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x20 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000      0x103 ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x6a ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000      0x1df ./Core/common/Src/eepstate.o
+ .debug_macro   0x00000000       0x46 ./Core/common/Src/eepstate.o
  .group         0x00000000        0xc ./Core/common/Src/gpio.o
  .group         0x00000000        0xc ./Core/common/Src/gpio.o
  .group         0x00000000        0xc ./Core/common/Src/gpio.o
@@ -298,6 +310,7 @@ Discarded input sections
  .group         0x00000000        0xc ./Core/common/Src/lcd2.o
  .group         0x00000000        0xc ./Core/common/Src/lcd2.o
  .group         0x00000000        0xc ./Core/common/Src/lcd2.o
+ .group         0x00000000        0xc ./Core/common/Src/lcd2.o
  .text          0x00000000        0x0 ./Core/common/Src/lcd2.o
  .data          0x00000000        0x0 ./Core/common/Src/lcd2.o
  .bss           0x00000000        0x0 ./Core/common/Src/lcd2.o
@@ -329,7 +342,7 @@ Discarded input sections
                 0x00000000       0x68 ./Core/common/Src/lcd2.o
  .debug_rnglists
                 0x00000000       0x4a ./Core/common/Src/lcd2.o
- .debug_macro   0x00000000      0x224 ./Core/common/Src/lcd2.o
+ .debug_macro   0x00000000      0x22d ./Core/common/Src/lcd2.o
  .debug_macro   0x00000000      0xad8 ./Core/common/Src/lcd2.o
  .debug_macro   0x00000000       0x22 ./Core/common/Src/lcd2.o
  .debug_macro   0x00000000       0x5b ./Core/common/Src/lcd2.o
@@ -369,12 +382,14 @@ Discarded input sections
  .debug_macro   0x00000000      0x1c6 ./Core/common/Src/lcd2.o
  .debug_macro   0x00000000       0x10 ./Core/common/Src/lcd2.o
  .debug_macro   0x00000000       0x10 ./Core/common/Src/lcd2.o
- .debug_line    0x00000000      0x820 ./Core/common/Src/lcd2.o
- .debug_str     0x00000000    0x9872c ./Core/common/Src/lcd2.o
+ .debug_macro   0x00000000       0x46 ./Core/common/Src/lcd2.o
+ .debug_line    0x00000000      0x82c ./Core/common/Src/lcd2.o
+ .debug_str     0x00000000    0x9882b ./Core/common/Src/lcd2.o
  .comment       0x00000000       0x44 ./Core/common/Src/lcd2.o
  .debug_frame   0x00000000      0x178 ./Core/common/Src/lcd2.o
  .ARM.attributes
                 0x00000000       0x34 ./Core/common/Src/lcd2.o
+ .group         0x00000000        0xc ./Core/common/Src/stm32f4xx_it.o
  .group         0x00000000        0xc ./Core/common/Src/stm32f4xx_it.o
  .group         0x00000000        0xc ./Core/common/Src/stm32f4xx_it.o
  .group         0x00000000        0xc ./Core/common/Src/stm32f4xx_it.o
@@ -417,6 +432,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x1c6 ./Core/common/Src/stm32f4xx_it.o
  .debug_macro   0x00000000       0x10 ./Core/common/Src/stm32f4xx_it.o
  .debug_macro   0x00000000       0x10 ./Core/common/Src/stm32f4xx_it.o
+ .debug_macro   0x00000000       0x46 ./Core/common/Src/stm32f4xx_it.o
  .group         0x00000000        0xc ./Core/common/Src/syscalls.o
  .group         0x00000000        0xc ./Core/common/Src/syscalls.o
  .group         0x00000000        0xc ./Core/common/Src/syscalls.o
@@ -702,14 +718,10 @@ Discarded input sections
  .text          0x00000000        0x0 ./Core/common/Src/uart6.o
  .data          0x00000000        0x0 ./Core/common/Src/uart6.o
  .bss           0x00000000        0x0 ./Core/common/Src/uart6.o
- .text.uart_putc
-                0x00000000       0x44 ./Core/common/Src/uart6.o
  .text.uart_getc
                 0x00000000       0x4c ./Core/common/Src/uart6.o
  .text.uart_fgets
                 0x00000000       0x68 ./Core/common/Src/uart6.o
- .text.uart_put_hex32
-                0x00000000       0x54 ./Core/common/Src/uart6.o
  .debug_macro   0x00000000      0xad8 ./Core/common/Src/uart6.o
  .debug_macro   0x00000000       0x22 ./Core/common/Src/uart6.o
  .debug_macro   0x00000000       0x8e ./Core/common/Src/uart6.o
@@ -794,10 +806,6 @@ Discarded input sections
  .text          0x00000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .data          0x00000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .bss           0x00000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .text.memset   0x00000000       0x10 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .debug_frame   0x00000000       0x20 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
- .ARM.attributes
-                0x00000000       0x34 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .text          0x00000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
  .data          0x00000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
  .bss           0x00000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-closer.o)
@@ -1038,10 +1046,11 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
 LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/crt0.o
 LOAD ./Core/boot/Src/boot.o
-LOAD ./Core/boot/Src/eeplog.o
 LOAD ./Core/boot/Startup/startup_stm32f429zitx.o
 LOAD ./Core/common/Src/clock.o
 LOAD ./Core/common/Src/crashlog.o
+LOAD ./Core/common/Src/eeplog.o
+LOAD ./Core/common/Src/eepstate.o
 LOAD ./Core/common/Src/gpio.o
 LOAD ./Core/common/Src/i2c1.o
 LOAD ./Core/common/Src/lcd2.o
@@ -1083,313 +1092,348 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
                 0x08000000                g_pfnVectors
                 0x080001ac                        . = ALIGN (0x4)
 
-.text           0x080001ac     0x1334
+.text           0x080001ac     0x1998
                 0x080001ac                        . = ALIGN (0x4)
  *(.text)
  .text          0x080001ac       0x40 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.text*)
  .text.crashlog_valid
                 0x080001ec       0x30 ./Core/boot/Src/boot.o
- .text.crashlog_clear
-                0x0800021c       0x20 ./Core/boot/Src/boot.o
- .text.app_is_valid
-                0x0800023c       0x70 ./Core/boot/Src/boot.o
+ .text.main     0x0800021c       0x80 ./Core/boot/Src/boot.o
+                0x0800021c                main
+ .text.app_valid
+                0x0800029c       0x70 ./Core/boot/Src/boot.o
  .text.jump_to_app
-                0x080002ac       0xc4 ./Core/boot/Src/boot.o
- .text.main     0x08000370       0x5c ./Core/boot/Src/boot.o
-                0x08000370                main
- .text.boot_crashlog_service
-                0x080003cc       0xa4 ./Core/boot/Src/boot.o
- .text.boot_dump_crashlog
-                0x08000470       0x1c ./Core/boot/Src/boot.o
+                0x0800030c       0xc0 ./Core/boot/Src/boot.o
  .text.Reset_Handler
-                0x0800048c       0x50 ./Core/boot/Startup/startup_stm32f429zitx.o
-                0x0800048c                Reset_Handler
+                0x080003cc       0x50 ./Core/boot/Startup/startup_stm32f429zitx.o
+                0x080003cc                Reset_Handler
  .text.Default_Handler
-                0x080004dc        0x2 ./Core/boot/Startup/startup_stm32f429zitx.o
-                0x080004dc                RTC_Alarm_IRQHandler
-                0x080004dc                HASH_RNG_IRQHandler
-                0x080004dc                EXTI2_IRQHandler
-                0x080004dc                TIM8_CC_IRQHandler
-                0x080004dc                UART8_IRQHandler
-                0x080004dc                SPI4_IRQHandler
-                0x080004dc                TIM1_CC_IRQHandler
-                0x080004dc                DMA2_Stream5_IRQHandler
-                0x080004dc                DMA1_Stream5_IRQHandler
-                0x080004dc                PVD_IRQHandler
-                0x080004dc                SDIO_IRQHandler
-                0x080004dc                TAMP_STAMP_IRQHandler
-                0x080004dc                CAN2_RX1_IRQHandler
-                0x080004dc                EXTI3_IRQHandler
-                0x080004dc                TIM8_TRG_COM_TIM14_IRQHandler
-                0x080004dc                TIM1_UP_TIM10_IRQHandler
-                0x080004dc                TIM8_UP_TIM13_IRQHandler
-                0x080004dc                I2C3_ER_IRQHandler
-                0x080004dc                EXTI0_IRQHandler
-                0x080004dc                I2C2_EV_IRQHandler
-                0x080004dc                DMA1_Stream2_IRQHandler
-                0x080004dc                CAN1_RX0_IRQHandler
-                0x080004dc                FPU_IRQHandler
-                0x080004dc                OTG_HS_WKUP_IRQHandler
-                0x080004dc                LTDC_ER_IRQHandler
-                0x080004dc                CAN2_SCE_IRQHandler
-                0x080004dc                DMA2_Stream2_IRQHandler
-                0x080004dc                SPI1_IRQHandler
-                0x080004dc                TIM6_DAC_IRQHandler
-                0x080004dc                TIM1_BRK_TIM9_IRQHandler
-                0x080004dc                DCMI_IRQHandler
-                0x080004dc                CAN2_RX0_IRQHandler
-                0x080004dc                DMA2_Stream3_IRQHandler
-                0x080004dc                USART6_IRQHandler
-                0x080004dc                USART3_IRQHandler
-                0x080004dc                CAN1_RX1_IRQHandler
-                0x080004dc                UART5_IRQHandler
-                0x080004dc                DMA2_Stream0_IRQHandler
-                0x080004dc                TIM4_IRQHandler
-                0x080004dc                I2C1_EV_IRQHandler
-                0x080004dc                DMA1_Stream6_IRQHandler
-                0x080004dc                DMA1_Stream1_IRQHandler
-                0x080004dc                UART4_IRQHandler
-                0x080004dc                TIM3_IRQHandler
-                0x080004dc                RCC_IRQHandler
-                0x080004dc                TIM8_BRK_TIM12_IRQHandler
-                0x080004dc                Default_Handler
-                0x080004dc                EXTI15_10_IRQHandler
-                0x080004dc                ADC_IRQHandler
-                0x080004dc                DMA1_Stream7_IRQHandler
-                0x080004dc                SPI5_IRQHandler
-                0x080004dc                TIM7_IRQHandler
-                0x080004dc                CAN2_TX_IRQHandler
-                0x080004dc                TIM5_IRQHandler
-                0x080004dc                DMA2_Stream7_IRQHandler
-                0x080004dc                I2C3_EV_IRQHandler
-                0x080004dc                EXTI9_5_IRQHandler
-                0x080004dc                RTC_WKUP_IRQHandler
-                0x080004dc                LTDC_IRQHandler
-                0x080004dc                ETH_WKUP_IRQHandler
-                0x080004dc                SPI2_IRQHandler
-                0x080004dc                OTG_HS_EP1_IN_IRQHandler
-                0x080004dc                DMA1_Stream0_IRQHandler
-                0x080004dc                CAN1_TX_IRQHandler
-                0x080004dc                EXTI4_IRQHandler
-                0x080004dc                ETH_IRQHandler
-                0x080004dc                OTG_HS_EP1_OUT_IRQHandler
-                0x080004dc                WWDG_IRQHandler
-                0x080004dc                SPI6_IRQHandler
-                0x080004dc                TIM2_IRQHandler
-                0x080004dc                OTG_FS_WKUP_IRQHandler
-                0x080004dc                TIM1_TRG_COM_TIM11_IRQHandler
-                0x080004dc                OTG_HS_IRQHandler
-                0x080004dc                DMA2D_IRQHandler
-                0x080004dc                EXTI1_IRQHandler
-                0x080004dc                UART7_IRQHandler
-                0x080004dc                USART2_IRQHandler
-                0x080004dc                I2C2_ER_IRQHandler
-                0x080004dc                DMA2_Stream1_IRQHandler
-                0x080004dc                CAN1_SCE_IRQHandler
-                0x080004dc                FLASH_IRQHandler
-                0x080004dc                DMA2_Stream4_IRQHandler
-                0x080004dc                USART1_IRQHandler
-                0x080004dc                OTG_FS_IRQHandler
-                0x080004dc                SPI3_IRQHandler
-                0x080004dc                DMA1_Stream4_IRQHandler
-                0x080004dc                I2C1_ER_IRQHandler
-                0x080004dc                FMC_IRQHandler
-                0x080004dc                DMA2_Stream6_IRQHandler
-                0x080004dc                SAI1_IRQHandler
-                0x080004dc                DMA1_Stream3_IRQHandler
- *fill*         0x080004de        0x2 
+                0x0800041c        0x2 ./Core/boot/Startup/startup_stm32f429zitx.o
+                0x0800041c                RTC_Alarm_IRQHandler
+                0x0800041c                HASH_RNG_IRQHandler
+                0x0800041c                EXTI2_IRQHandler
+                0x0800041c                TIM8_CC_IRQHandler
+                0x0800041c                UART8_IRQHandler
+                0x0800041c                SPI4_IRQHandler
+                0x0800041c                TIM1_CC_IRQHandler
+                0x0800041c                DMA2_Stream5_IRQHandler
+                0x0800041c                DMA1_Stream5_IRQHandler
+                0x0800041c                PVD_IRQHandler
+                0x0800041c                SDIO_IRQHandler
+                0x0800041c                TAMP_STAMP_IRQHandler
+                0x0800041c                CAN2_RX1_IRQHandler
+                0x0800041c                EXTI3_IRQHandler
+                0x0800041c                TIM8_TRG_COM_TIM14_IRQHandler
+                0x0800041c                TIM1_UP_TIM10_IRQHandler
+                0x0800041c                TIM8_UP_TIM13_IRQHandler
+                0x0800041c                I2C3_ER_IRQHandler
+                0x0800041c                EXTI0_IRQHandler
+                0x0800041c                I2C2_EV_IRQHandler
+                0x0800041c                DMA1_Stream2_IRQHandler
+                0x0800041c                CAN1_RX0_IRQHandler
+                0x0800041c                FPU_IRQHandler
+                0x0800041c                OTG_HS_WKUP_IRQHandler
+                0x0800041c                LTDC_ER_IRQHandler
+                0x0800041c                CAN2_SCE_IRQHandler
+                0x0800041c                DMA2_Stream2_IRQHandler
+                0x0800041c                SPI1_IRQHandler
+                0x0800041c                TIM6_DAC_IRQHandler
+                0x0800041c                TIM1_BRK_TIM9_IRQHandler
+                0x0800041c                DCMI_IRQHandler
+                0x0800041c                CAN2_RX0_IRQHandler
+                0x0800041c                DMA2_Stream3_IRQHandler
+                0x0800041c                USART6_IRQHandler
+                0x0800041c                USART3_IRQHandler
+                0x0800041c                CAN1_RX1_IRQHandler
+                0x0800041c                UART5_IRQHandler
+                0x0800041c                DMA2_Stream0_IRQHandler
+                0x0800041c                TIM4_IRQHandler
+                0x0800041c                I2C1_EV_IRQHandler
+                0x0800041c                DMA1_Stream6_IRQHandler
+                0x0800041c                DMA1_Stream1_IRQHandler
+                0x0800041c                UART4_IRQHandler
+                0x0800041c                TIM3_IRQHandler
+                0x0800041c                RCC_IRQHandler
+                0x0800041c                TIM8_BRK_TIM12_IRQHandler
+                0x0800041c                Default_Handler
+                0x0800041c                EXTI15_10_IRQHandler
+                0x0800041c                ADC_IRQHandler
+                0x0800041c                DMA1_Stream7_IRQHandler
+                0x0800041c                SPI5_IRQHandler
+                0x0800041c                TIM7_IRQHandler
+                0x0800041c                CAN2_TX_IRQHandler
+                0x0800041c                TIM5_IRQHandler
+                0x0800041c                DMA2_Stream7_IRQHandler
+                0x0800041c                I2C3_EV_IRQHandler
+                0x0800041c                EXTI9_5_IRQHandler
+                0x0800041c                RTC_WKUP_IRQHandler
+                0x0800041c                LTDC_IRQHandler
+                0x0800041c                ETH_WKUP_IRQHandler
+                0x0800041c                SPI2_IRQHandler
+                0x0800041c                OTG_HS_EP1_IN_IRQHandler
+                0x0800041c                DMA1_Stream0_IRQHandler
+                0x0800041c                CAN1_TX_IRQHandler
+                0x0800041c                EXTI4_IRQHandler
+                0x0800041c                ETH_IRQHandler
+                0x0800041c                OTG_HS_EP1_OUT_IRQHandler
+                0x0800041c                WWDG_IRQHandler
+                0x0800041c                SPI6_IRQHandler
+                0x0800041c                TIM2_IRQHandler
+                0x0800041c                OTG_FS_WKUP_IRQHandler
+                0x0800041c                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0800041c                OTG_HS_IRQHandler
+                0x0800041c                DMA2D_IRQHandler
+                0x0800041c                EXTI1_IRQHandler
+                0x0800041c                UART7_IRQHandler
+                0x0800041c                USART2_IRQHandler
+                0x0800041c                I2C2_ER_IRQHandler
+                0x0800041c                DMA2_Stream1_IRQHandler
+                0x0800041c                CAN1_SCE_IRQHandler
+                0x0800041c                FLASH_IRQHandler
+                0x0800041c                DMA2_Stream4_IRQHandler
+                0x0800041c                USART1_IRQHandler
+                0x0800041c                OTG_FS_IRQHandler
+                0x0800041c                SPI3_IRQHandler
+                0x0800041c                DMA1_Stream4_IRQHandler
+                0x0800041c                I2C1_ER_IRQHandler
+                0x0800041c                FMC_IRQHandler
+                0x0800041c                DMA2_Stream6_IRQHandler
+                0x0800041c                SAI1_IRQHandler
+                0x0800041c                DMA1_Stream3_IRQHandler
+ *fill*         0x0800041e        0x2 
  .text.get_hclk
-                0x080004e0       0x18 ./Core/common/Src/clock.o
-                0x080004e0                get_hclk
+                0x08000420       0x18 ./Core/common/Src/clock.o
+                0x08000420                get_hclk
  .text.get_pclk1
-                0x080004f8       0x18 ./Core/common/Src/clock.o
-                0x080004f8                get_pclk1
+                0x08000438       0x18 ./Core/common/Src/clock.o
+                0x08000438                get_pclk1
  .text.get_pclk2
-                0x08000510       0x18 ./Core/common/Src/clock.o
-                0x08000510                get_pclk2
+                0x08000450       0x18 ./Core/common/Src/clock.o
+                0x08000450                get_pclk2
  .text.wait_set
-                0x08000528       0x40 ./Core/common/Src/clock.o
+                0x08000468       0x40 ./Core/common/Src/clock.o
  .text.wait_clear
-                0x08000568       0x40 ./Core/common/Src/clock.o
+                0x080004a8       0x40 ./Core/common/Src/clock.o
  .text.clock_update
-                0x080005a8      0x1e0 ./Core/common/Src/clock.o
-                0x080005a8                clock_update
+                0x080004e8      0x1e0 ./Core/common/Src/clock.o
+                0x080004e8                clock_update
  .text.hse_enable
-                0x08000788       0x44 ./Core/common/Src/clock.o
-                0x08000788                hse_enable
+                0x080006c8       0x44 ./Core/common/Src/clock.o
+                0x080006c8                hse_enable
  .text.clock_hse_pll_168
-                0x080007cc      0x12c ./Core/common/Src/clock.o
-                0x080007cc                clock_hse_pll_168
+                0x0800070c      0x12c ./Core/common/Src/clock.o
+                0x0800070c                clock_hse_pll_168
+ .text.crashlog_valid
+                0x08000838       0x30 ./Core/common/Src/eeplog.o
+ .text.crashlog_clear
+                0x08000868       0x20 ./Core/common/Src/eeplog.o
+ .text.eeloghdr_load
+                0x08000888       0xc8 ./Core/common/Src/eeplog.o
+ .text.eelog_rec_addr
+                0x08000950       0x2a ./Core/common/Src/eeplog.o
+ .text.eelog_append
+                0x0800097a       0xc0 ./Core/common/Src/eeplog.o
+ *fill*         0x08000a3a        0x2 
+ .text.boot_eeprom
+                0x08000a3c       0x80 ./Core/common/Src/eeplog.o
+                0x08000a3c                boot_eeprom
+ .text.calc_xor
+                0x08000abc       0x40 ./Core/common/Src/eepstate.o
+ .text.is_valid
+                0x08000afc       0x54 ./Core/common/Src/eepstate.o
+ .text.set_default
+                0x08000b50       0xc0 ./Core/common/Src/eepstate.o
+ .text.eestate_load
+                0x08000c10      0x15a ./Core/common/Src/eepstate.o
+                0x08000c10                eestate_load
+ *fill*         0x08000d6a        0x2 
+ .text.eestate_store_next
+                0x08000d6c       0x8c ./Core/common/Src/eepstate.o
+                0x08000d6c                eestate_store_next
+ .text.eestate_boot_step
+                0x08000df8       0xba ./Core/common/Src/eepstate.o
+                0x08000df8                eestate_boot_step
+ *fill*         0x08000eb2        0x2 
  .text.GPIO_Enable
-                0x080008f8       0x38 ./Core/common/Src/gpio.o
-                0x080008f8                GPIO_Enable
- .text.GPIO_AF  0x08000930       0xec ./Core/common/Src/gpio.o
-                0x08000930                GPIO_AF
+                0x08000eb4       0x38 ./Core/common/Src/gpio.o
+                0x08000eb4                GPIO_Enable
+ .text.GPIO_AF  0x08000eec       0xec ./Core/common/Src/gpio.o
+                0x08000eec                GPIO_AF
  .text.i2c1_init
-                0x08000a1c      0x120 ./Core/common/Src/i2c1.o
-                0x08000a1c                i2c1_init
+                0x08000fd8      0x120 ./Core/common/Src/i2c1.o
+                0x08000fd8                i2c1_init
  .text.i2c1_master_tx
-                0x08000b3c      0x19c ./Core/common/Src/i2c1.o
-                0x08000b3c                i2c1_master_tx
+                0x080010f8      0x19c ./Core/common/Src/i2c1.o
+                0x080010f8                i2c1_master_tx
  .text.i2c1_master_rx
-                0x08000cd8      0x288 ./Core/common/Src/i2c1.o
-                0x08000cd8                i2c1_master_rx
+                0x08001294      0x288 ./Core/common/Src/i2c1.o
+                0x08001294                i2c1_master_rx
  .text.i2c_SR1_ERR
-                0x08000f60       0x74 ./Core/common/Src/i2c1.o
-                0x08000f60                i2c_SR1_ERR
+                0x0800151c       0x74 ./Core/common/Src/i2c1.o
+                0x0800151c                i2c_SR1_ERR
  .text.at24c256_read
-                0x08000fd4       0x50 ./Core/common/Src/i2c1.o
-                0x08000fd4                at24c256_read
+                0x08001590       0x50 ./Core/common/Src/i2c1.o
+                0x08001590                at24c256_read
  .text.at24c256_write
-                0x08001024       0x82 ./Core/common/Src/i2c1.o
-                0x08001024                at24c256_write
- *fill*         0x080010a6        0x2 
+                0x080015e0       0x82 ./Core/common/Src/i2c1.o
+                0x080015e0                at24c256_write
+ *fill*         0x08001662        0x2 
  .text.__NVIC_SystemReset
-                0x080010a8       0x2c ./Core/common/Src/stm32f4xx_it.o
+                0x08001664       0x2c ./Core/common/Src/stm32f4xx_it.o
  .text.NMI_Handler
-                0x080010d4        0x8 ./Core/common/Src/stm32f4xx_it.o
-                0x080010d4                NMI_Handler
+                0x08001690        0x8 ./Core/common/Src/stm32f4xx_it.o
+                0x08001690                NMI_Handler
  .text.HardFault_Handler
-                0x080010dc       0xac ./Core/common/Src/stm32f4xx_it.o
-                0x080010dc                HardFault_Handler
+                0x08001698       0xac ./Core/common/Src/stm32f4xx_it.o
+                0x08001698                HardFault_Handler
  .text.MemManage_Handler
-                0x08001188        0x8 ./Core/common/Src/stm32f4xx_it.o
-                0x08001188                MemManage_Handler
+                0x08001744        0x8 ./Core/common/Src/stm32f4xx_it.o
+                0x08001744                MemManage_Handler
  .text.BusFault_Handler
-                0x08001190        0x8 ./Core/common/Src/stm32f4xx_it.o
-                0x08001190                BusFault_Handler
+                0x0800174c        0x8 ./Core/common/Src/stm32f4xx_it.o
+                0x0800174c                BusFault_Handler
  .text.UsageFault_Handler
-                0x08001198        0x8 ./Core/common/Src/stm32f4xx_it.o
-                0x08001198                UsageFault_Handler
+                0x08001754        0x8 ./Core/common/Src/stm32f4xx_it.o
+                0x08001754                UsageFault_Handler
  .text.SVC_Handler
-                0x080011a0        0xe ./Core/common/Src/stm32f4xx_it.o
-                0x080011a0                SVC_Handler
+                0x0800175c        0xe ./Core/common/Src/stm32f4xx_it.o
+                0x0800175c                SVC_Handler
  .text.DebugMon_Handler
-                0x080011ae        0xe ./Core/common/Src/stm32f4xx_it.o
-                0x080011ae                DebugMon_Handler
+                0x0800176a        0xe ./Core/common/Src/stm32f4xx_it.o
+                0x0800176a                DebugMon_Handler
  .text.PendSV_Handler
-                0x080011bc        0xe ./Core/common/Src/stm32f4xx_it.o
-                0x080011bc                PendSV_Handler
+                0x08001778        0xe ./Core/common/Src/stm32f4xx_it.o
+                0x08001778                PendSV_Handler
  .text.SysTick_Handler
-                0x080011ca        0xc ./Core/common/Src/stm32f4xx_it.o
-                0x080011ca                SysTick_Handler
- *fill*         0x080011d6        0x2 
+                0x08001786        0xc ./Core/common/Src/stm32f4xx_it.o
+                0x08001786                SysTick_Handler
+ *fill*         0x08001792        0x2 
  .text.SystemInit
-                0x080011d8       0x24 ./Core/common/Src/system_stm32f4xx.o
-                0x080011d8                SystemInit
+                0x08001794       0x24 ./Core/common/Src/system_stm32f4xx.o
+                0x08001794                SystemInit
  .text.timebase_isr_tick
-                0x080011fc       0x1c ./Core/common/Src/timbase.o
-                0x080011fc                timebase_isr_tick
+                0x080017b8       0x1c ./Core/common/Src/timbase.o
+                0x080017b8                timebase_isr_tick
  .text.sys_init
-                0x08001218       0x40 ./Core/common/Src/timbase.o
-                0x08001218                sys_init
- .text.delay    0x08001258       0x2a ./Core/common/Src/timbase.o
-                0x08001258                delay
- *fill*         0x08001282        0x2 
- .text.millis   0x08001284       0x18 ./Core/common/Src/timbase.o
-                0x08001284                millis
+                0x080017d4       0x40 ./Core/common/Src/timbase.o
+                0x080017d4                sys_init
+ .text.delay    0x08001814       0x2a ./Core/common/Src/timbase.o
+                0x08001814                delay
+ *fill*         0x0800183e        0x2 
+ .text.millis   0x08001840       0x18 ./Core/common/Src/timbase.o
+                0x08001840                millis
  .text.USART6_INIT
-                0x0800129c       0xb0 ./Core/common/Src/uart6.o
-                0x0800129c                USART6_INIT
+                0x08001858       0xb0 ./Core/common/Src/uart6.o
+                0x08001858                USART6_INIT
+ .text.uart_putc
+                0x08001908       0x44 ./Core/common/Src/uart6.o
+                0x08001908                uart_putc
  .text.uart_puts
-                0x0800134c       0x70 ./Core/common/Src/uart6.o
-                0x0800134c                uart_puts
+                0x0800194c       0x70 ./Core/common/Src/uart6.o
+                0x0800194c                uart_puts
  .text.uart_set_baud
-                0x080013bc       0x8e ./Core/common/Src/uart6.o
-                0x080013bc                uart_set_baud
+                0x080019bc       0x8e ./Core/common/Src/uart6.o
+                0x080019bc                uart_set_baud
+ .text.uart_put_hex32
+                0x08001a4a       0x54 ./Core/common/Src/uart6.o
+                0x08001a4a                uart_put_hex32
  .text.uart_put_str
-                0x0800144a       0x16 ./Core/common/Src/uart6.o
-                0x0800144a                uart_put_str
- .text.memcmp   0x08001460       0x20 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
-                0x08001460                memcmp
+                0x08001a9e       0x16 ./Core/common/Src/uart6.o
+                0x08001a9e                uart_put_str
+ .text.memcmp   0x08001ab4       0x20 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
+                0x08001ab4                memcmp
+ .text.memset   0x08001ad4       0x10 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x08001ad4                memset
  .text.__libc_init_array
-                0x08001480       0x48 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
-                0x08001480                __libc_init_array
+                0x08001ae4       0x48 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x08001ae4                __libc_init_array
  *(.glue_7)
- .glue_7        0x080014c8        0x0 linker stubs
+ .glue_7        0x08001b2c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080014c8        0x0 linker stubs
+ .glue_7t       0x08001b2c        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080014c8        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x08001b2c        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x080014c8        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x080014c8                _init
- .init          0x080014cc        0x8 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x08001b2c        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08001b2c                _init
+ .init          0x08001b30        0x8 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x080014d4        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
-                0x080014d4                _fini
- .fini          0x080014d8        0x8 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
-                0x080014e0                        . = ALIGN (0x4)
-                0x080014e0                        _etext = .
+ .fini          0x08001b38        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crti.o
+                0x08001b38                _fini
+ .fini          0x08001b3c        0x8 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x08001b44                        . = ALIGN (0x4)
+                0x08001b44                        _etext = .
 
-.vfp11_veneer   0x080014e0        0x0
- .vfp11_veneer  0x080014e0        0x0 linker stubs
+.vfp11_veneer   0x08001b44        0x0
+ .vfp11_veneer  0x08001b44        0x0 linker stubs
 
-.v4_bx          0x080014e0        0x0
- .v4_bx         0x080014e0        0x0 linker stubs
+.v4_bx          0x08001b44        0x0
+ .v4_bx         0x08001b44        0x0 linker stubs
 
-.iplt           0x080014e0        0x0
- .iplt          0x080014e0        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x08001b44        0x0
+ .iplt          0x08001b44        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x080014e0      0x114
-                0x080014e0                        . = ALIGN (0x4)
+.rodata         0x08001b44      0x138
+                0x08001b44                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x080014e0       0xe3 ./Core/boot/Src/boot.o
+ .rodata        0x08001b44        0xd ./Core/boot/Src/boot.o
+ *fill*         0x08001b51        0x3 
+ .rodata        0x08001b54       0xf5 ./Core/common/Src/eeplog.o
  *(.rodata*)
- *fill*         0x080015c3        0x1 
+ *fill*         0x08001c49        0x3 
  .rodata.apb_tbl
-                0x080015c4        0x8 ./Core/common/Src/clock.o
-                0x080015c4                apb_tbl
+                0x08001c4c        0x8 ./Core/common/Src/clock.o
+                0x08001c4c                apb_tbl
  .rodata.ahb_tbl
-                0x080015cc       0x20 ./Core/common/Src/clock.o
-                0x080015cc                ahb_tbl
+                0x08001c54       0x20 ./Core/common/Src/clock.o
+                0x08001c54                ahb_tbl
  .rodata.pllp_tbl
-                0x080015ec        0x8 ./Core/common/Src/clock.o
-                0x080015f4                        . = ALIGN (0x4)
+                0x08001c74        0x8 ./Core/common/Src/clock.o
+                0x08001c7c                        . = ALIGN (0x4)
 
-.ARM.extab      0x080015f4        0x0
-                0x080015f4                        . = ALIGN (0x4)
+.ARM.extab      0x08001c7c        0x0
+                0x08001c7c                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080015f4                        . = ALIGN (0x4)
+                0x08001c7c                        . = ALIGN (0x4)
 
-.ARM            0x080015f4        0x0
-                0x080015f4                        . = ALIGN (0x4)
-                0x080015f4                        __exidx_start = .
+.ARM            0x08001c7c        0x0
+                0x08001c7c                        . = ALIGN (0x4)
+                0x08001c7c                        __exidx_start = .
  *(.ARM.exidx*)
-                0x080015f4                        __exidx_end = .
-                0x080015f4                        . = ALIGN (0x4)
+                0x08001c7c                        __exidx_end = .
+                0x08001c7c                        . = ALIGN (0x4)
 
-.preinit_array  0x080015f4        0x0
-                0x080015f4                        . = ALIGN (0x4)
-                0x080015f4                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08001c7c        0x0
+                0x08001c7c                        . = ALIGN (0x4)
+                0x08001c7c                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080015f4                        PROVIDE (__preinit_array_end = .)
-                0x080015f4                        . = ALIGN (0x4)
+                0x08001c7c                        PROVIDE (__preinit_array_end = .)
+                0x08001c7c                        . = ALIGN (0x4)
 
-.init_array     0x080015f4        0x4
-                0x080015f4                        . = ALIGN (0x4)
-                0x080015f4                        PROVIDE (__init_array_start = .)
+.init_array     0x08001c7c        0x4
+                0x08001c7c                        . = ALIGN (0x4)
+                0x08001c7c                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x080015f4        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x080015f8                        PROVIDE (__init_array_end = .)
-                0x080015f8                        . = ALIGN (0x4)
+ .init_array    0x08001c7c        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x08001c80                        PROVIDE (__init_array_end = .)
+                0x08001c80                        . = ALIGN (0x4)
 
-.fini_array     0x080015f8        0x4
-                0x080015f8                        . = ALIGN (0x4)
+.fini_array     0x08001c80        0x4
+                0x08001c80                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080015f8        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .fini_array    0x08001c80        0x4 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x080015fc                        . = ALIGN (0x4)
-                0x080015fc                        _sidata = LOADADDR (.data)
+                0x08001c84                        . = ALIGN (0x4)
+                0x08001c84                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x080015fc        0x0
- .rel.iplt      0x080015fc        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x08001c84        0x0
+ .rel.iplt      0x08001c84        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.data           0x20000000        0x0 load address 0x080015fc
+.data           0x20000000        0x0 load address 0x08001c84
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -1398,12 +1442,12 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  *(.RamFunc*)
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _edata = .
-                0x080015fc                        _siccmram = LOADADDR (.ccmram)
+                0x08001c84                        _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x20000000        0x0 load address 0x080015fc
+.igot.plt       0x20000000        0x0 load address 0x08001c84
  .igot.plt      0x20000000        0x0 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.ccmram         0x10000000        0x0 load address 0x080015fc
+.ccmram         0x10000000        0x0 load address 0x08001c84
                 0x10000000                        . = ALIGN (0x4)
                 0x10000000                        _sccmram = .
  *(.ccmram)
@@ -1467,159 +1511,204 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .ARM.attributes
                 0x000000df       0x34 ./Core/common/Src/crashlog.o
  .ARM.attributes
-                0x00000113       0x34 ./Core/common/Src/gpio.o
+                0x00000113       0x34 ./Core/common/Src/eeplog.o
  .ARM.attributes
-                0x00000147       0x34 ./Core/common/Src/i2c1.o
+                0x00000147       0x34 ./Core/common/Src/eepstate.o
  .ARM.attributes
-                0x0000017b       0x34 ./Core/common/Src/stm32f4xx_it.o
+                0x0000017b       0x34 ./Core/common/Src/gpio.o
  .ARM.attributes
-                0x000001af       0x34 ./Core/common/Src/system_stm32f4xx.o
+                0x000001af       0x34 ./Core/common/Src/i2c1.o
  .ARM.attributes
-                0x000001e3       0x34 ./Core/common/Src/timbase.o
+                0x000001e3       0x34 ./Core/common/Src/stm32f4xx_it.o
  .ARM.attributes
-                0x00000217       0x34 ./Core/common/Src/uart6.o
+                0x00000217       0x34 ./Core/common/Src/system_stm32f4xx.o
  .ARM.attributes
-                0x0000024b       0x34 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
+                0x0000024b       0x34 ./Core/common/Src/timbase.o
  .ARM.attributes
-                0x0000027f       0x34 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x0000027f       0x34 ./Core/common/Src/uart6.o
  .ARM.attributes
-                0x000002b3       0x22 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
+                0x000002b3       0x34 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
+ .ARM.attributes
+                0x000002e7       0x34 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .ARM.attributes
+                0x0000031b       0x34 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+ .ARM.attributes
+                0x0000034f       0x22 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard/crtn.o
 OUTPUT(no-codegen.elf elf32-littlearm)
 LOAD linker stubs
 LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc.a
 LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000     0x217c
- .debug_info    0x00000000      0x4b1 ./Core/boot/Src/boot.o
- .debug_info    0x000004b1       0x30 ./Core/boot/Startup/startup_stm32f429zitx.o
- .debug_info    0x000004e1      0x31d ./Core/common/Src/clock.o
- .debug_info    0x000007fe      0x167 ./Core/common/Src/crashlog.o
- .debug_info    0x00000965      0x296 ./Core/common/Src/gpio.o
- .debug_info    0x00000bfb      0x427 ./Core/common/Src/i2c1.o
- .debug_info    0x00001022      0x4ca ./Core/common/Src/stm32f4xx_it.o
- .debug_info    0x000014ec      0x527 ./Core/common/Src/system_stm32f4xx.o
- .debug_info    0x00001a13      0x366 ./Core/common/Src/timbase.o
- .debug_info    0x00001d79      0x403 ./Core/common/Src/uart6.o
+.debug_info     0x00000000     0x29a9
+ .debug_info    0x00000000      0x401 ./Core/boot/Src/boot.o
+ .debug_info    0x00000401       0x30 ./Core/boot/Startup/startup_stm32f429zitx.o
+ .debug_info    0x00000431      0x31d ./Core/common/Src/clock.o
+ .debug_info    0x0000074e      0x167 ./Core/common/Src/crashlog.o
+ .debug_info    0x000008b5      0x4ca ./Core/common/Src/eeplog.o
+ .debug_info    0x00000d7f      0x413 ./Core/common/Src/eepstate.o
+ .debug_info    0x00001192      0x296 ./Core/common/Src/gpio.o
+ .debug_info    0x00001428      0x427 ./Core/common/Src/i2c1.o
+ .debug_info    0x0000184f      0x4ca ./Core/common/Src/stm32f4xx_it.o
+ .debug_info    0x00001d19      0x527 ./Core/common/Src/system_stm32f4xx.o
+ .debug_info    0x00002240      0x366 ./Core/common/Src/timbase.o
+ .debug_info    0x000025a6      0x403 ./Core/common/Src/uart6.o
 
-.debug_abbrev   0x00000000      0xd78
- .debug_abbrev  0x00000000      0x28a ./Core/boot/Src/boot.o
- .debug_abbrev  0x0000028a       0x24 ./Core/boot/Startup/startup_stm32f429zitx.o
- .debug_abbrev  0x000002ae      0x15c ./Core/common/Src/clock.o
- .debug_abbrev  0x0000040a       0xa7 ./Core/common/Src/crashlog.o
- .debug_abbrev  0x000004b1       0xf1 ./Core/common/Src/gpio.o
- .debug_abbrev  0x000005a2      0x1ed ./Core/common/Src/i2c1.o
- .debug_abbrev  0x0000078f      0x1e6 ./Core/common/Src/stm32f4xx_it.o
- .debug_abbrev  0x00000975      0x11a ./Core/common/Src/system_stm32f4xx.o
- .debug_abbrev  0x00000a8f      0x170 ./Core/common/Src/timbase.o
- .debug_abbrev  0x00000bff      0x179 ./Core/common/Src/uart6.o
+.debug_abbrev   0x00000000     0x1062
+ .debug_abbrev  0x00000000      0x210 ./Core/boot/Src/boot.o
+ .debug_abbrev  0x00000210       0x24 ./Core/boot/Startup/startup_stm32f429zitx.o
+ .debug_abbrev  0x00000234      0x15c ./Core/common/Src/clock.o
+ .debug_abbrev  0x00000390       0xa7 ./Core/common/Src/crashlog.o
+ .debug_abbrev  0x00000437      0x1eb ./Core/common/Src/eeplog.o
+ .debug_abbrev  0x00000622      0x179 ./Core/common/Src/eepstate.o
+ .debug_abbrev  0x0000079b       0xf1 ./Core/common/Src/gpio.o
+ .debug_abbrev  0x0000088c      0x1ed ./Core/common/Src/i2c1.o
+ .debug_abbrev  0x00000a79      0x1e6 ./Core/common/Src/stm32f4xx_it.o
+ .debug_abbrev  0x00000c5f      0x11a ./Core/common/Src/system_stm32f4xx.o
+ .debug_abbrev  0x00000d79      0x170 ./Core/common/Src/timbase.o
+ .debug_abbrev  0x00000ee9      0x179 ./Core/common/Src/uart6.o
 
-.debug_aranges  0x00000000      0x2b8
+.debug_aranges  0x00000000      0x348
  .debug_aranges
-                0x00000000       0x50 ./Core/boot/Src/boot.o
+                0x00000000       0x38 ./Core/boot/Src/boot.o
  .debug_aranges
-                0x00000050       0x28 ./Core/boot/Startup/startup_stm32f429zitx.o
+                0x00000038       0x28 ./Core/boot/Startup/startup_stm32f429zitx.o
  .debug_aranges
-                0x00000078       0x58 ./Core/common/Src/clock.o
+                0x00000060       0x58 ./Core/common/Src/clock.o
  .debug_aranges
-                0x000000d0       0x18 ./Core/common/Src/crashlog.o
+                0x000000b8       0x18 ./Core/common/Src/crashlog.o
  .debug_aranges
-                0x000000e8       0x30 ./Core/common/Src/gpio.o
+                0x000000d0       0x50 ./Core/common/Src/eeplog.o
  .debug_aranges
-                0x00000118       0x50 ./Core/common/Src/i2c1.o
+                0x00000120       0x58 ./Core/common/Src/eepstate.o
  .debug_aranges
-                0x00000168       0x68 ./Core/common/Src/stm32f4xx_it.o
+                0x00000178       0x30 ./Core/common/Src/gpio.o
  .debug_aranges
-                0x000001d0       0x28 ./Core/common/Src/system_stm32f4xx.o
+                0x000001a8       0x50 ./Core/common/Src/i2c1.o
  .debug_aranges
-                0x000001f8       0x68 ./Core/common/Src/timbase.o
+                0x000001f8       0x68 ./Core/common/Src/stm32f4xx_it.o
  .debug_aranges
-                0x00000260       0x58 ./Core/common/Src/uart6.o
+                0x00000260       0x28 ./Core/common/Src/system_stm32f4xx.o
+ .debug_aranges
+                0x00000288       0x68 ./Core/common/Src/timbase.o
+ .debug_aranges
+                0x000002f0       0x58 ./Core/common/Src/uart6.o
 
 .debug_rnglists
-                0x00000000      0x1dd
+                0x00000000      0x247
  .debug_rnglists
-                0x00000000       0x39 ./Core/boot/Src/boot.o
+                0x00000000       0x27 ./Core/boot/Src/boot.o
  .debug_rnglists
-                0x00000039       0x19 ./Core/boot/Startup/startup_stm32f429zitx.o
+                0x00000027       0x19 ./Core/boot/Startup/startup_stm32f429zitx.o
  .debug_rnglists
-                0x00000052       0x3f ./Core/common/Src/clock.o
+                0x00000040       0x3f ./Core/common/Src/clock.o
  .debug_rnglists
-                0x00000091       0x21 ./Core/common/Src/gpio.o
+                0x0000007f       0x3b ./Core/common/Src/eeplog.o
  .debug_rnglists
-                0x000000b2       0x3c ./Core/common/Src/i2c1.o
+                0x000000ba       0x41 ./Core/common/Src/eepstate.o
  .debug_rnglists
-                0x000000ee       0x4a ./Core/common/Src/stm32f4xx_it.o
+                0x000000fb       0x21 ./Core/common/Src/gpio.o
  .debug_rnglists
-                0x00000138       0x1a ./Core/common/Src/system_stm32f4xx.o
+                0x0000011c       0x3c ./Core/common/Src/i2c1.o
  .debug_rnglists
-                0x00000152       0x4c ./Core/common/Src/timbase.o
+                0x00000158       0x4a ./Core/common/Src/stm32f4xx_it.o
  .debug_rnglists
-                0x0000019e       0x3f ./Core/common/Src/uart6.o
+                0x000001a2       0x1a ./Core/common/Src/system_stm32f4xx.o
+ .debug_rnglists
+                0x000001bc       0x4c ./Core/common/Src/timbase.o
+ .debug_rnglists
+                0x00000208       0x3f ./Core/common/Src/uart6.o
 
-.debug_macro    0x00000000    0x1adb2
- .debug_macro   0x00000000      0x13a ./Core/boot/Src/boot.o
- .debug_macro   0x0000013a      0xad8 ./Core/boot/Src/boot.o
- .debug_macro   0x00000c12       0x22 ./Core/boot/Src/boot.o
- .debug_macro   0x00000c34       0x8e ./Core/boot/Src/boot.o
- .debug_macro   0x00000cc2       0x51 ./Core/boot/Src/boot.o
- .debug_macro   0x00000d13      0x103 ./Core/boot/Src/boot.o
- .debug_macro   0x00000e16       0x6a ./Core/boot/Src/boot.o
- .debug_macro   0x00000e80      0x1df ./Core/boot/Src/boot.o
- .debug_macro   0x0000105f       0x2e ./Core/boot/Src/boot.o
- .debug_macro   0x0000108d       0x28 ./Core/boot/Src/boot.o
- .debug_macro   0x000010b5       0x1c ./Core/boot/Src/boot.o
- .debug_macro   0x000010d1       0x22 ./Core/boot/Src/boot.o
- .debug_macro   0x000010f3       0xfb ./Core/boot/Src/boot.o
- .debug_macro   0x000011ee     0x1011 ./Core/boot/Src/boot.o
- .debug_macro   0x000021ff      0x11f ./Core/boot/Src/boot.o
- .debug_macro   0x0000231e    0x17ff1 ./Core/boot/Src/boot.o
- .debug_macro   0x0001a30f       0x6d ./Core/boot/Src/boot.o
- .debug_macro   0x0001a37c      0x1c6 ./Core/boot/Src/boot.o
- .debug_macro   0x0001a542       0x10 ./Core/boot/Src/boot.o
- .debug_macro   0x0001a552       0x10 ./Core/boot/Src/boot.o
- .debug_macro   0x0001a562       0x10 ./Core/boot/Src/boot.o
- .debug_macro   0x0001a572       0x94 ./Core/common/Src/clock.o
- .debug_macro   0x0001a606      0x1c0 ./Core/common/Src/clock.o
- .debug_macro   0x0001a7c6       0x6c ./Core/common/Src/crashlog.o
- .debug_macro   0x0001a832       0x7c ./Core/common/Src/gpio.o
- .debug_macro   0x0001a8ae       0xa2 ./Core/common/Src/i2c1.o
- .debug_macro   0x0001a950      0x138 ./Core/common/Src/stm32f4xx_it.o
- .debug_macro   0x0001aa88      0x136 ./Core/common/Src/stm32f4xx_it.o
- .debug_macro   0x0001abbe       0xda ./Core/common/Src/system_stm32f4xx.o
- .debug_macro   0x0001ac98       0x9a ./Core/common/Src/timbase.o
- .debug_macro   0x0001ad32       0x80 ./Core/common/Src/uart6.o
+.debug_macro    0x00000000    0x1bb1a
+ .debug_macro   0x00000000      0x140 ./Core/boot/Src/boot.o
+ .debug_macro   0x00000140      0xad8 ./Core/boot/Src/boot.o
+ .debug_macro   0x00000c18       0x22 ./Core/boot/Src/boot.o
+ .debug_macro   0x00000c3a       0x8e ./Core/boot/Src/boot.o
+ .debug_macro   0x00000cc8       0x51 ./Core/boot/Src/boot.o
+ .debug_macro   0x00000d19      0x103 ./Core/boot/Src/boot.o
+ .debug_macro   0x00000e1c       0x6a ./Core/boot/Src/boot.o
+ .debug_macro   0x00000e86      0x1df ./Core/boot/Src/boot.o
+ .debug_macro   0x00001065       0x2e ./Core/boot/Src/boot.o
+ .debug_macro   0x00001093       0x28 ./Core/boot/Src/boot.o
+ .debug_macro   0x000010bb       0x1c ./Core/boot/Src/boot.o
+ .debug_macro   0x000010d7       0x22 ./Core/boot/Src/boot.o
+ .debug_macro   0x000010f9       0xfb ./Core/boot/Src/boot.o
+ .debug_macro   0x000011f4     0x1011 ./Core/boot/Src/boot.o
+ .debug_macro   0x00002205      0x11f ./Core/boot/Src/boot.o
+ .debug_macro   0x00002324    0x17ff1 ./Core/boot/Src/boot.o
+ .debug_macro   0x0001a315       0x6d ./Core/boot/Src/boot.o
+ .debug_macro   0x0001a382      0x1c6 ./Core/boot/Src/boot.o
+ .debug_macro   0x0001a548       0x10 ./Core/boot/Src/boot.o
+ .debug_macro   0x0001a558       0x10 ./Core/boot/Src/boot.o
+ .debug_macro   0x0001a568       0x46 ./Core/boot/Src/boot.o
+ .debug_macro   0x0001a5ae       0x94 ./Core/common/Src/clock.o
+ .debug_macro   0x0001a642      0x1c0 ./Core/common/Src/clock.o
+ .debug_macro   0x0001a802       0x6c ./Core/common/Src/crashlog.o
+ .debug_macro   0x0001a86e      0x162 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001a9d0       0x5b ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001aa2b       0x2a ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001aa55       0x94 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001aae9       0x43 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001ab2c       0x34 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001ab60      0x190 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001acf0       0x57 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001ad47      0x370 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b0b7       0x16 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b0cd       0x4a ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b117       0x34 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b14b       0x10 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b15b       0x58 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b1b3       0x8e ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b241       0x1c ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b25d      0x185 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b3e2       0x10 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b3f2       0x3c ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b42e       0x20 ./Core/common/Src/eeplog.o
+ .debug_macro   0x0001b44e      0x143 ./Core/common/Src/eepstate.o
+ .debug_macro   0x0001b591       0x7c ./Core/common/Src/gpio.o
+ .debug_macro   0x0001b60d       0xa2 ./Core/common/Src/i2c1.o
+ .debug_macro   0x0001b6af      0x141 ./Core/common/Src/stm32f4xx_it.o
+ .debug_macro   0x0001b7f0      0x136 ./Core/common/Src/stm32f4xx_it.o
+ .debug_macro   0x0001b926       0xda ./Core/common/Src/system_stm32f4xx.o
+ .debug_macro   0x0001ba00       0x9a ./Core/common/Src/timbase.o
+ .debug_macro   0x0001ba9a       0x80 ./Core/common/Src/uart6.o
 
-.debug_line     0x00000000     0x3d69
- .debug_line    0x00000000      0x790 ./Core/boot/Src/boot.o
- .debug_line    0x00000790       0x7a ./Core/boot/Startup/startup_stm32f429zitx.o
- .debug_line    0x0000080a      0x6ef ./Core/common/Src/clock.o
- .debug_line    0x00000ef9      0x41e ./Core/common/Src/crashlog.o
- .debug_line    0x00001317      0x55b ./Core/common/Src/gpio.o
- .debug_line    0x00001872      0xadb ./Core/common/Src/i2c1.o
- .debug_line    0x0000234d      0x71a ./Core/common/Src/stm32f4xx_it.o
- .debug_line    0x00002a67      0x56d ./Core/common/Src/system_stm32f4xx.o
- .debug_line    0x00002fd4      0x6c3 ./Core/common/Src/timbase.o
- .debug_line    0x00003697      0x6d2 ./Core/common/Src/uart6.o
+.debug_line     0x00000000     0x4d1e
+ .debug_line    0x00000000      0x701 ./Core/boot/Src/boot.o
+ .debug_line    0x00000701       0x7a ./Core/boot/Startup/startup_stm32f429zitx.o
+ .debug_line    0x0000077b      0x6ef ./Core/common/Src/clock.o
+ .debug_line    0x00000e6a      0x41e ./Core/common/Src/crashlog.o
+ .debug_line    0x00001288      0x7ed ./Core/common/Src/eeplog.o
+ .debug_line    0x00001a75      0x84b ./Core/common/Src/eepstate.o
+ .debug_line    0x000022c0      0x55b ./Core/common/Src/gpio.o
+ .debug_line    0x0000281b      0xadb ./Core/common/Src/i2c1.o
+ .debug_line    0x000032f6      0x726 ./Core/common/Src/stm32f4xx_it.o
+ .debug_line    0x00003a1c      0x56d ./Core/common/Src/system_stm32f4xx.o
+ .debug_line    0x00003f89      0x6c3 ./Core/common/Src/timbase.o
+ .debug_line    0x0000464c      0x6d2 ./Core/common/Src/uart6.o
 
-.debug_str      0x00000000    0x9587f
- .debug_str     0x00000000    0x9587f ./Core/boot/Src/boot.o
-                              0x94cc8 (size before relaxing)
- .debug_str     0x0009587f       0x72 ./Core/boot/Startup/startup_stm32f429zitx.o
- .debug_str     0x0009587f     0x50e9 ./Core/common/Src/clock.o
- .debug_str     0x0009587f     0x3e1a ./Core/common/Src/crashlog.o
- .debug_str     0x0009587f     0x512c ./Core/common/Src/gpio.o
- .debug_str     0x0009587f     0x51b7 ./Core/common/Src/i2c1.o
- .debug_str     0x0009587f    0x95158 ./Core/common/Src/stm32f4xx_it.o
- .debug_str     0x0009587f    0x93a19 ./Core/common/Src/system_stm32f4xx.o
- .debug_str     0x0009587f     0x51a7 ./Core/common/Src/timbase.o
- .debug_str     0x0009587f     0x51a7 ./Core/common/Src/uart6.o
+.debug_str      0x00000000    0x98fe4
+ .debug_str     0x00000000    0x98fe4 ./Core/boot/Src/boot.o
+                              0x94d69 (size before relaxing)
+ .debug_str     0x00098fe4       0x72 ./Core/boot/Startup/startup_stm32f429zitx.o
+ .debug_str     0x00098fe4     0x50e9 ./Core/common/Src/clock.o
+ .debug_str     0x00098fe4     0x3e1a ./Core/common/Src/crashlog.o
+ .debug_str     0x00098fe4     0x7603 ./Core/common/Src/eeplog.o
+ .debug_str     0x00098fe4     0x7571 ./Core/common/Src/eepstate.o
+ .debug_str     0x00098fe4     0x512c ./Core/common/Src/gpio.o
+ .debug_str     0x00098fe4     0x51b7 ./Core/common/Src/i2c1.o
+ .debug_str     0x00098fe4    0x95257 ./Core/common/Src/stm32f4xx_it.o
+ .debug_str     0x00098fe4    0x93a19 ./Core/common/Src/system_stm32f4xx.o
+ .debug_str     0x00098fe4     0x51a7 ./Core/common/Src/timbase.o
+ .debug_str     0x00098fe4     0x51a7 ./Core/common/Src/uart6.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Core/boot/Src/boot.o
                                  0x44 (size before relaxing)
  .comment       0x00000043       0x44 ./Core/common/Src/clock.o
  .comment       0x00000043       0x44 ./Core/common/Src/crashlog.o
+ .comment       0x00000043       0x44 ./Core/common/Src/eeplog.o
+ .comment       0x00000043       0x44 ./Core/common/Src/eepstate.o
  .comment       0x00000043       0x44 ./Core/common/Src/gpio.o
  .comment       0x00000043       0x44 ./Core/common/Src/i2c1.o
  .comment       0x00000043       0x44 ./Core/common/Src/stm32f4xx_it.o
@@ -1627,17 +1716,20 @@ LOAD C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .comment       0x00000043       0x44 ./Core/common/Src/timbase.o
  .comment       0x00000043       0x44 ./Core/common/Src/uart6.o
 
-.debug_frame    0x00000000      0x824
- .debug_frame   0x00000000      0x100 ./Core/boot/Src/boot.o
- .debug_frame   0x00000100      0x120 ./Core/common/Src/clock.o
- .debug_frame   0x00000220       0x80 ./Core/common/Src/gpio.o
- .debug_frame   0x000002a0      0x10c ./Core/common/Src/i2c1.o
- .debug_frame   0x000003ac      0x124 ./Core/common/Src/stm32f4xx_it.o
- .debug_frame   0x000004d0       0x58 ./Core/common/Src/system_stm32f4xx.o
- .debug_frame   0x00000528      0x16c ./Core/common/Src/timbase.o
- .debug_frame   0x00000694      0x13c ./Core/common/Src/uart6.o
- .debug_frame   0x000007d0       0x28 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
- .debug_frame   0x000007f8       0x2c C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+.debug_frame    0x00000000      0xa34
+ .debug_frame   0x00000000       0x9c ./Core/boot/Src/boot.o
+ .debug_frame   0x0000009c      0x120 ./Core/common/Src/clock.o
+ .debug_frame   0x000001bc      0x10c ./Core/common/Src/eeplog.o
+ .debug_frame   0x000002c8      0x148 ./Core/common/Src/eepstate.o
+ .debug_frame   0x00000410       0x80 ./Core/common/Src/gpio.o
+ .debug_frame   0x00000490      0x10c ./Core/common/Src/i2c1.o
+ .debug_frame   0x0000059c      0x124 ./Core/common/Src/stm32f4xx_it.o
+ .debug_frame   0x000006c0       0x58 ./Core/common/Src/system_stm32f4xx.o
+ .debug_frame   0x00000718      0x16c ./Core/common/Src/timbase.o
+ .debug_frame   0x00000884      0x13c ./Core/common/Src/uart6.o
+ .debug_frame   0x000009c0       0x28 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memcmp.o)
+ .debug_frame   0x000009e8       0x20 C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x00000a08       0x2c C:/ST/STM32CubeIDE_1.17.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344/tools/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
 
 .debug_line_str
                 0x00000000       0x56

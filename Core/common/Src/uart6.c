@@ -47,7 +47,7 @@ int uart_putc(uint8_t msg){
 	return 0;
 }
 
-int uart_puts(const uint8_t* msg){
+int uart_puts(const char *msg){
 
 	while (*msg != '\0') {
 		if (*msg == '\n') {
@@ -134,8 +134,5 @@ void uart_put_hex32(uint32_t value)
     }
 }
 
-void uart_put_str(const char *s)
-{
-    uart_puts((const uint8_t*)s);
-}
+
 

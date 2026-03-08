@@ -310,7 +310,7 @@ int at24c256_read(uint16_t mem, uint8_t* out, uint16_t len)
 int at24c256_write(uint16_t mem_addr, const uint8_t* data, uint16_t len)
 {
     // AT24C256 : 2byte
-    uint8_t buf[2 + 64]; // <=64B
+    uint8_t buf[2 + 64]; // 2B addr + 64B data
     if (len > 64) return -1;
 
     buf[0] = (uint8_t)(mem_addr >> 8);

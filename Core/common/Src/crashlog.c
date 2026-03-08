@@ -9,3 +9,5 @@
 
 
 volatile crashlog_t g_crashlog __attribute__((section(".noinit.crash")));
+
+
