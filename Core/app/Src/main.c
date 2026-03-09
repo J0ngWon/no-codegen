@@ -10,7 +10,8 @@ static void fault_test_invstate(void)
     fn(); // INVSTATE
 }
 
-char msg[5]={'A','p','p','1','\0'};
+char msg[5]={'A','p','p','2','\0'};
+char test[5]={'t','e','s','t','\0'};
 
 //__asm volatile("BKPT #0");
 //	fault_test_invstate();
@@ -23,16 +24,18 @@ int main(void){
 
 	sys_init(1000);
 	uart_puts(msg);
-	//USART6_INIT();
-	//i2c1_init(0);
-	lcd_init();
+	USART6_INIT();
+	uart_puts(test);
+
+	i2c1_init(0);
+	/*lcd_init();
 	lcd_set_cursor(0, 0);
-	lcd_puts(msg);
+	lcd_puts(msg);*/
 
 
     tim2_pwm_output();
-    //tim5_pwm_capture();
-    //tim5_freq_duty(&ff,&dd,1);
+    tim5_pwm_capture();
+    tim5_freq_duty(&ff,&dd,1);
 
     delay(1000);
     led_on();
