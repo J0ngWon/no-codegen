@@ -18,5 +18,6 @@
 #include "timebase.h"
 #include "crashlog.h"
 #include "eeprom.h"
+#include "spi.h"
 
 #endif /* INC_DIY_H_ */
