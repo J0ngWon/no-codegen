@@ -1,0 +1,8 @@
+../Core/common/Src/clock.c:49:10:get_hclk	1
+../Core/common/Src/clock.c:51:10:get_pclk1	1
+../Core/common/Src/clock.c:53:10:get_pclk2	1
+../Core/common/Src/clock.c:55:12:wait_set	3
+../Core/common/Src/clock.c:63:12:wait_clear	3
+../Core/common/Src/clock.c:71:5:clock_update	6
+../Core/common/Src/clock.c:119:5:hse_enable	2
+../Core/common/Src/clock.c:127:5:clock_hse_pll_168	6

@@ -1,0 +1,7 @@
+../Core/common/Src/uart6.c:12:6:USART6_INIT	1
+../Core/common/Src/uart6.c:40:5:uart_putc	3
+../Core/common/Src/uart6.c:50:5:uart_puts	6
+../Core/common/Src/uart6.c:69:5:uart_getc	3
+../Core/common/Src/uart6.c:84:5:uart_fgets	4
+../Core/common/Src/uart6.c:101:5:uart_set_baud	2
+../Core/common/Src/uart6.c:128:6:uart_put_hex32	3
