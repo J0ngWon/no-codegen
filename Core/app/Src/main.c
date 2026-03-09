@@ -10,49 +10,44 @@ static void fault_test_invstate(void)
     fn(); // INVSTATE
 }
 
-char msg[4]={'A','p','p','\n'};
+char msg[5]={'A','p','p','1','\0'};
 
 //__asm volatile("BKPT #0");
+//	fault_test_invstate();
 
 int main(void){
-	__enable_irq();
-
 	uint32_t ff,dd;
 
-	/*if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
+	__enable_irq();
+	clock_update();
+
 	sys_init(1000);
-	USART6_INIT();
-	i2c1_init(0);*/
-
 	uart_puts(msg);
-
-	eestate_confirm_ok();
-
-	fault_test_invstate();
+	//USART6_INIT();
+	//i2c1_init(0);
+	lcd_init();
+	lcd_set_cursor(0, 0);
+	lcd_puts(msg);
 
 
     tim2_pwm_output();
-    tim5_pwm_capture();
+    //tim5_pwm_capture();
+    //tim5_freq_duty(&ff,&dd,1);
 
-    tim5_freq_duty(&ff,&dd,1);
-
-    delay(100);
+    delay(1000);
     led_on();
 
-	i2c1_init(0);
-	lcd_init();
-	lcd_set_cursor(0, 0);
-	lcd_puts(&msg);
 
+	eestate_confirm_ok();
 	while(1){
 
 		led_off();
 		GPIO_Write(GPIO_PORT_B,10,0);
-		delay(100);
+		delay(1000);
 
 		led_on();
 		GPIO_Write(GPIO_PORT_B,10,1);
-		delay(100);
+		delay(1000);
 	}
 }
 

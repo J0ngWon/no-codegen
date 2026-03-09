@@ -65,20 +65,20 @@ void boot_eeprom(void)
 
     eeloghdr_t hdr;
     if (eeloghdr_load(&hdr) != 0) {
-        uart_puts("EEPLOG: header load fail\r\n");
+        uart_puts("EEPLOG: header load fail\n");
         return;
     }
 
-    uart_puts("EEPLOG: crashlog found, append...\r\n");
+    uart_puts("EEPLOG: crashlog found, append...\n");
     int r = eelog_append(&hdr, (const crashlog_t*)&g_crashlog);
 
     if (r == 0) {
-        uart_puts("EEPLOG: verify OK\r\n");
+        uart_puts("EEPLOG: verify OK\n");
         crashlog_clear();
     } else {
         uart_puts("EEPLOG: verify FAIL, r=0x");
         uart_put_hex32((uint32_t)r);
-        uart_puts("\r\n");
+        uart_puts("\n");
 
     }
 }
@@ -87,7 +87,7 @@ void boot_dump_last_crash(void)
 {
     eeloghdr_t hdr;
     if (eelog_load_hdr(&hdr) != 0 || hdr.count == 0) {
-        uart_puts("EELOG: empty\r\n");
+        uart_puts("EELOG: empty\n");
         return;
     }
 
@@ -96,17 +96,17 @@ void boot_dump_last_crash(void)
 
     crashlog_t rec;
     if (at24c256_read(addr, (uint8_t*)&rec, sizeof(rec)) != 0) {
-        uart_puts("EELOG: read fail\r\n");
+        uart_puts("EELOG: read fail\n");
         return;
     }
 
-    uart_puts("=== EELOG LAST ===\r\n");
-    uart_puts("idx : 0x"); uart_put_hex32(last); uart_puts("\r\n");
-    uart_puts("VTOR: 0x"); uart_put_hex32(rec.vtor); uart_puts("\r\n");
-    uart_puts("HFSR: 0x"); uart_put_hex32(rec.hfsr); uart_puts("\r\n");
-    uart_puts("CFSR: 0x"); uart_put_hex32(rec.cfsr); uart_puts("\r\n");
-    uart_puts("MMFAR:0x"); uart_put_hex32(rec.mmfar); uart_puts("\r\n");
-    uart_puts("BFAR: 0x"); uart_put_hex32(rec.bfar); uart_puts("\r\n");
+    uart_puts("=== EELOG LAST ===\n");
+    uart_puts("idx : 0x"); uart_put_hex32(last); uart_puts("\n");
+    uart_puts("VTOR: 0x"); uart_put_hex32(rec.vtor); uart_puts("\n");
+    uart_puts("HFSR: 0x"); uart_put_hex32(rec.hfsr); uart_puts("\n");
+    uart_puts("CFSR: 0x"); uart_put_hex32(rec.cfsr); uart_puts("\n");
+    uart_puts("MMFAR:0x"); uart_put_hex32(rec.mmfar); uart_puts("\n");
+    uart_puts("BFAR: 0x"); uart_put_hex32(rec.bfar); uart_puts("\n");
 }
 
 

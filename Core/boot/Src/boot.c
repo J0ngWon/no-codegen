@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include "stm32f4xx.h"   // NVIC, __set_MSP, __disable_irq
 #include "diy.h"
+#include <string.h>
 
 #define APP_BASE   (0x08010000U) // FLASH.app.ld
 #define FLASH_END  (0x08200000U) // RM0090 77p
@@ -28,7 +29,7 @@ int main(void) {
 	USART6_INIT();
 	i2c1_init(0);
 
-	uart_puts("BOOT start\r\n");
+	uart_puts("BOOT start\n");
 
 	// check crash
 	int crash = crashlog_valid();
@@ -42,9 +43,7 @@ int main(void) {
 	eestate_boot_step(FAIL_LIMIT, crash, crash_seq, &enter_recovery);
 
 	if (enter_recovery) {
-		while(1){
-			//TODO
-			}
+
 	}
 	if (app_valid()) {
 		jump_to_app();
