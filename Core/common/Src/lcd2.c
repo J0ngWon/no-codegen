@@ -23,8 +23,9 @@ typedef void (*pcf_write_p)(uint8_t);
 // 기본(blocking) 구현
 static void pcf_write_blocking(uint8_t b)
 {
-    //(void)HAL_I2C_Master_Transmit(&hi2c1, LCD_ADDR_8BIT, &b, 1, 50);
-	(void)i2c1_master_tx(LCD_ADDR_8BIT, &b, 1);
+
+	int a=i2c1_master_tx(LCD_ADDR_8BIT, &b, 1);
+	if(a){__asm volatile("BKPT #0");}
 }
 
 // 현재 사용 중인 구현 포인터 (처음엔 blocking)

@@ -43,7 +43,8 @@ int main(void) {
 	eestate_boot_step(FAIL_LIMIT, crash, crash_seq, &enter_recovery);
 
 	if (enter_recovery) {
-
+		uart_puts("recovery\n");
+		//TODO
 	}
 	if (app_valid()) {
 		jump_to_app();
