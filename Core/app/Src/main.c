@@ -10,14 +10,16 @@ static void fault_test_invstate(void)
     fn(); // INVSTATE
 }
 
-char msg[5]={'A','p','p','\n','\0'};
+char msg[5]={'a','p','p','\n','\0'};
 char test[5]={'t','e','s','t','\0'};
+uint8_t tt[2]={0x9a,'\0'};
 
 //__asm volatile("BKPT #0");
 //	fault_test_invstate();
 
 int main(void){
 	uint32_t ff,dd;
+	uint8_t garbage;
 
 	__enable_irq();
 	clock_update();
@@ -25,8 +27,8 @@ int main(void){
 	sys_init(1000);
 	USART6_INIT();
 	uart_puts(msg);
-
-
+	spi4_init();
+	spi4_txrx(&garbage,tt,2);
 
 	i2c1_init(0);
 	lcd_init();

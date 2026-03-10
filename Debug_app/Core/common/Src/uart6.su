@@ -4,3 +4,4 @@
 ../Core/common/Src/uart6.c:69:5:uart_getc	16	static
 ../Core/common/Src/uart6.c:84:5:uart_fgets	24	static
 ../Core/common/Src/uart6.c:101:5:uart_set_baud	56	static
+../Core/common/Src/uart6.c:128:6:uart_put_hex32	32	static

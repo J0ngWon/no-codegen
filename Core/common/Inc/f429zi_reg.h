@@ -11,11 +11,11 @@
 #include <stdint.h>
 
 /* ===== SPI ===== */
-#define SPI_BASE        ((volatile uint32_t *)(0x40013400))
-#define SPI_CR1       ((volatile uint32_t*)((uintptr_t)SPI_CR1 + 0x00U))
-#define SPI_CR2       ((volatile uint32_t*)((uintptr_t)SPI_CR1 + 0x04U))
-#define SPI_SR       ((volatile uint32_t*)((uintptr_t)SPI_CR1 + 0x08U))
-#define SPI_DR       ((volatile uint32_t*)((uintptr_t)SPI_CR1 + 0x0CU))
+#define SPI4_BASE        ((volatile uint32_t *)(0x40013400))
+#define SPI4_CR1       ((volatile uint32_t*)((uintptr_t)SPI4_BASE + 0x00U))
+#define SPI4_CR2       ((volatile uint32_t*)((uintptr_t)SPI4_BASE + 0x04U))
+#define SPI4_SR       ((volatile uint32_t*)((uintptr_t)SPI4_BASE + 0x08U))
+#define SPI4_DR       ((volatile uint32_t*)((uintptr_t)SPI4_BASE + 0x0CU))
 
 /* ===== NVIC ===== */
 #define NVIC_BASE        ((volatile uint32_t *)(0xE000E000))

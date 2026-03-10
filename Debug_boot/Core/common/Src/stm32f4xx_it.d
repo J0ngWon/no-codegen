@@ -13,7 +13,7 @@ Core/common/Src/stm32f4xx_it.o: ../Core/common/Src/stm32f4xx_it.c \
  ../Core/common/Inc/uart6.h ../Core/common/Inc/i2c1.h \
  ../Core/common/Inc/clock.h ../Core/common/Inc/ledlcd.h \
  ../Core/common/Inc/timebase.h ../Core/common/Inc/crashlog.h \
- ../Core/common/Inc/eeprom.h
+ ../Core/common/Inc/eeprom.h ../Core/common/Inc/spi.h
 ../Core/app/Inc/main.h:
 ../Core/common/Inc/stm32f4xx_it.h:
 ../Core/common/Inc/diy.h:
@@ -34,3 +34,4 @@ Core/common/Src/stm32f4xx_it.o: ../Core/common/Src/stm32f4xx_it.c \
 ../Core/common/Inc/timebase.h:
 ../Core/common/Inc/crashlog.h:
 ../Core/common/Inc/eeprom.h:
+../Core/common/Inc/spi.h:
