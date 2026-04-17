@@ -11,8 +11,7 @@
 
 #include <stdint.h>
 
-void led_on(void);
-void led_off(void);
+
 void old_delay(uint32_t ms);
 
 //lcd

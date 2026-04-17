@@ -298,22 +298,13 @@ int i2c_SR1_ERR(void) {
 	return 0;
 }
 
-//read: 2byte + stop + (read)
-int at24c256_read(uint16_t mem, uint8_t* out, uint16_t len)
-{
-    uint8_t a[2] = { (uint8_t)(mem >> 8), (uint8_t)(mem & 0xFF) };
-    int r = i2c1_master_tx(AT24_ADDR_8BIT, a, 2);
-    if (r != 0) return r;
-    return i2c1_master_rx(AT24_ADDR_8BIT, out, len);
-}
-
 int at24c256_write(uint16_t mem_addr, const uint8_t* data, uint16_t len)
 {
     // AT24C256 : 2byte
     uint8_t buf[2 + 64]; // 2B addr + 64B data
     if (len > 64) return -1;
 
-    buf[0] = (uint8_t)(mem_addr >> 8);
+    buf[0] = (uint8_t)(mem_addr >> 0x8U);
     buf[1] = (uint8_t)(mem_addr & 0xFF);
     for (uint16_t i = 0; i < len; i++) buf[2 + i] = data[i];
 
@@ -324,3 +315,14 @@ int at24c256_write(uint16_t mem_addr, const uint8_t* data, uint16_t len)
 
     return r;
 }
+
+//read: 2byte + stop + (read)
+int at24c256_read(uint16_t mem, uint8_t* out, uint16_t len)
+{
+    uint8_t a[2] = { (uint8_t)(mem >> 0x8U), (uint8_t)(mem & 0xFF) };
+    int r = i2c1_master_tx(AT24_ADDR_8BIT, a, 2);
+    if (r != 0) return -1;
+    return i2c1_master_rx(AT24_ADDR_8BIT, out, len);
+}
+
+

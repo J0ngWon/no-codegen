@@ -86,10 +86,6 @@ void boot_eeprom(void)
 void boot_dump_last_crash(void)
 {
     eeloghdr_t hdr;
-    if (eelog_load_hdr(&hdr) != 0 || hdr.count == 0) {
-        uart_puts("EELOG: empty\n");
-        return;
-    }
 
     uint16_t last = (uint16_t)((hdr.write_idx + hdr.max_records - 1) % hdr.max_records);
     uint16_t addr = eelog_rec_addr(&hdr, last);
@@ -107,6 +103,7 @@ void boot_dump_last_crash(void)
     uart_puts("CFSR: 0x"); uart_put_hex32(rec.cfsr); uart_puts("\n");
     uart_puts("MMFAR:0x"); uart_put_hex32(rec.mmfar); uart_puts("\n");
     uart_puts("BFAR: 0x"); uart_put_hex32(rec.bfar); uart_puts("\n");
+    uart_puts("DFSR: 0x"); uart_put_hex32(rec.dfsr); uart_puts("\n");
 }
 
 

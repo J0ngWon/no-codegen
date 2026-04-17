@@ -104,10 +104,12 @@ void HardFault_Handler(void)
     g_crashlog.mmfar   = *SCB_MMFAR;
     g_crashlog.bfar    = *SCB_BFAR;
     g_crashlog.afsr    = *SCB_AFSR;
+    g_crashlog.dfsr = *SCB_DFSR;
 
     g_crashlog.msp     = __get_MSP();
     g_crashlog.psp     = __get_PSP();
     g_crashlog.control = __get_CONTROL();
+
 
     __DSB();
 

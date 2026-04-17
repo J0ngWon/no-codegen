@@ -118,7 +118,7 @@ void tim5_freq_duty(uint32_t *freq,uint32_t *duty,int ch){
 	uint32_t period;
 	volatile uint32_t *Other_CCR;
 	Other_CCR=((volatile uint32_t *)((uintptr_t)0x40000C00 + 0x30U + (4*(ch+1))));
-	if(tim5_capture_get(&period,ch)){__asm volatile("BKPT #0");}
+	if(tim5_capture_get(&period,ch)){while(1);}
 	*freq=1000000/period;
 	*duty=((*Other_CCR)*100)/(period);
 }

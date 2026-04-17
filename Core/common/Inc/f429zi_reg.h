@@ -30,6 +30,7 @@
 #define SCB_BFAR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x38UL))
 #define SCB_AFSR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x3CUL))
 
+#define SCB_DFSR      ((volatile uint32_t*)((uintptr_t)SCB_BASE + 0x30UL))
 
 /* ===== SysTick ===== */
 #define STK_CTRL        ((volatile uint32_t *)(0xE000E010U + 0x00U))
@@ -60,8 +61,12 @@
 #define GPIOB_OTYPER  ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x04U))
 #define GPIOB_OSPEEDR ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x08U))
 #define GPIOB_PUPDR  ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_B * 0x400U) + 0x0CU))
+
 #define GPIOB_MODER_LED     ((volatile uint32_t *)(0x40020400U + 0x00U))
 #define GPIOB_BSRR_LED      ((volatile uint32_t *)(0x40020400U + 0x18U))
+#define GPIOC_MODER_LED ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_C * 0x400U) + 0x00U))
+#define GPIOC_BSRR_LED ((volatile uint32_t*)((uintptr_t)GPIO_BASE_VAL + (GPIO_PORT_C * 0x400U) + 0x18U))
+
 
 /* ===== USART6 ===== */
 #define USART6_BASE     ((volatile uint32_t *)(0x40011400U + 0x00U))

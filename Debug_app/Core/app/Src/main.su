@@ -1,6 +1,7 @@
-../Core/app/Src/main.c:7:13:fault_test_invstate	16	static
-../Core/app/Src/main.c:20:5:main	24	static,ignoring_inline_asm
-../Core/app/Src/main.c:61:6:led_on	16	static
-../Core/app/Src/main.c:73:6:led_off	4	static
-../Core/app/Src/main.c:79:6:old_delay	24	static
-../Core/app/Src/main.c:92:6:Error_Handler	4	static,ignoring_inline_asm
+../Core/app/Src/main.c:14:13:fault_test_invstate	16	static
+../Core/app/Src/main.c:20:6:led	16	static
+../Core/app/Src/main.c:39:5:main	24	static,ignoring_inline_asm
+../Core/app/Src/main.c:83:6:led_on	24	static
+../Core/app/Src/main.c:95:6:led_off	16	static
+../Core/app/Src/main.c:102:6:old_delay	24	static
+../Core/app/Src/main.c:115:6:Error_Handler	4	static,ignoring_inline_asm

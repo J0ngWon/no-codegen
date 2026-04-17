@@ -21,8 +21,9 @@ typedef struct {
     uint32_t msp;
     uint32_t psp;
     uint32_t control;
+    uint32_t dfsr;
 
-    uint32_t reserved[3];
+    uint32_t reserved[2];
 } crashlog_t;
 
 typedef char crashlog_size_check[(sizeof(crashlog_t) == 64) ? 1 : -1];

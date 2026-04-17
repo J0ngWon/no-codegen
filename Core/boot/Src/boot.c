@@ -19,16 +19,16 @@ static int app_valid(void);
 static void jump_to_app(void);
 
 
-//__asm volatile("BKPT #0");
+
 
 int main(void) {
 
 
-	if(clock_hse_pll_168()){__asm volatile("BKPT #0");};
+	if(clock_hse_pll_168()){while(1);};
 	sys_init(1000);
 	USART6_INIT();
 	i2c1_init(0);
-
+	delay(5000);
 	uart_puts("BOOT start\n");
 
 	// check crash
@@ -37,7 +37,7 @@ int main(void) {
 
 	// crashlog -> eeprom
 	boot_eeprom();
-
+	boot_dump_last_crash();
 	// will be recovery?
 	int enter_recovery = 0;
 	eestate_boot_step(FAIL_LIMIT, crash, crash_seq, &enter_recovery);
@@ -45,6 +45,7 @@ int main(void) {
 	if (enter_recovery) {
 		uart_puts("recovery\n");
 		//TODO
+		boot_dump_last_crash();
 	}
 	if (app_valid()) {
 		jump_to_app();

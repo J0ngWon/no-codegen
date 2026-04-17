@@ -3,6 +3,13 @@
 #include "diy.h"
 
 
+typedef enum{
+	green=0,blue=7,red=14
+}led_pin;
+
+void led_on(led_pin num);
+void led_off(led_pin num);
+
 
 static void fault_test_invstate(void)
 {
@@ -10,11 +17,23 @@ static void fault_test_invstate(void)
     fn(); // INVSTATE
 }
 
-char msg[5]={'a','p','p','\n','\0'};
+void led(void){
+
+	uint32_t const GPIO_MOD_Mask      = (0x1U << (2U * 0U));
+	uint32_t const GPIO_MOD_ClearMask = ~(0x3U << (2U * 0U));
+
+	GPIO_Enable(GPIO_PORT_B);
+
+	*GPIOB_MODER_LED =(*GPIOB_MODER_LED & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+
+	*GPIOB_BSRR_LED = (0x1U<<0);
+}
+
+char msg[5]={'A','p','p','\n','\0'};
 char test[5]={'t','e','s','t','\0'};
 uint8_t tt[2]={0x9a,'\0'};
 
-//__asm volatile("BKPT #0");
+
 //	fault_test_invstate();
 
 int main(void){
@@ -41,38 +60,42 @@ int main(void){
     tim5_freq_duty(&ff,&dd,1);
 
     delay(1000);
-    led_on();
+
 
     //fault_test_invstate();
+
 	eestate_confirm_ok();
 	while(1){
 
-		led_off();
+		led_off(blue);
 		GPIO_Write(GPIO_PORT_B,10,0);
 		delay(1000);
 
-		led_on();
+		led_on(blue);
 		GPIO_Write(GPIO_PORT_B,10,1);
 		delay(1000);
 	}
 }
 
 
-void led_on(void){
+
+
+void led_on(led_pin num){
 	//PB7 PC13 PB14  LD1,2,3
-	uint32_t const GPIO_MOD_Mask      = (0x1U << (2U * 7U));
-	uint32_t const GPIO_MOD_ClearMask = ~(0x3U << (2U * 7U));
+	uint32_t const GPIO_MOD_Mask      = (0x1U << (2U * num));
+	uint32_t const GPIO_MOD_ClearMask = ~(0x3U << (2U * num));
 
 	GPIO_Enable(GPIO_PORT_B);
 
-	*GPIOB_MODER_LED =(*GPIOB_MODER_LED & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
+	*GPIOB_MODER_LED = (*GPIOB_MODER_LED & GPIO_MOD_ClearMask) | GPIO_MOD_Mask;
 
-	*GPIOB_BSRR_LED = (0x1U<<7);
+	*GPIOB_BSRR_LED = (0x1U<<num);
 }
 
-void led_off(void){
+void led_off(led_pin num) {
 
-	*GPIOB_BSRR_LED = (0x1U<<23);
+*GPIOB_BSRR_LED = (0x1U << 16 + num);
+
 }
 
 //HSI 16 MHz

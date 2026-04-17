@@ -25,7 +25,7 @@ static void pcf_write_blocking(uint8_t b)
 {
 
 	int a=i2c1_master_tx(LCD_ADDR_8BIT, &b, 1);
-	if(a){__asm volatile("BKPT #0");}
+	if(a){while(1);}
 }
 
 // 현재 사용 중인 구현 포인터 (처음엔 blocking)
